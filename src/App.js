@@ -4,6 +4,7 @@ import {Menu} from "./components/Menu";
 import {Welcome} from "./components/Welcome";
 import {Dashboard} from "./components/Dashboard/Dashboard";
 import {Reg} from "./components/Reg";
+import {TaskView} from "./components/Dashboard/TaskView";
 
 function App() {
     return (
@@ -13,6 +14,7 @@ function App() {
                 <Welcome/>
                 <Route path="/reg" render={()=><Reg/>}/>
                 <Dashboard/>
+                <TaskView/>
             </BrowserRouter>
     );
 }
