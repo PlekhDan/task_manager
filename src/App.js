@@ -10,8 +10,8 @@ function App() {
             <BrowserRouter>
                 <Route exact path="/" render={() => <Menu/>}/>
                 {/*<Route path="/create" render={() =>  }/>*/}
-                <Route path="/reg" render={()=><Reg/>}/>
                 <Welcome/>
+                <Route path="/reg" render={()=><Reg/>}/>
                 <Dashboard/>
             </BrowserRouter>
     );

@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 export class Reg extends React.Component{
     constructor() {
         super();
@@ -55,8 +56,7 @@ export class Reg extends React.Component{
         })
     }
     render() {
-        return <div className="col-sm-5 my-5 mx-auto">
-            <h2 className="text-center my-3">Регистрация</h2>
+        return <div className="col-sm-5 my-3 mx-auto">
             <form onSubmit={this.sendForm}>
                 <div className="mb-3">
                     <input value={this.state.name} onChange={this.handleInputChange} name="name" type="text" className="form-control" placeholder="Имя"/>
@@ -72,7 +72,7 @@ export class Reg extends React.Component{
                     <input value={this.state.pass} onChange={this.handleInputChange} name="pass" type="password" className="form-control" placeholder="Пароль"/>
                 </div>
                 <div className="mb-3">
-                    <input type="submit" className="form-control btn btn-primary" value="Отправить"/>
+                    <input type="submit" className="form-control btn btn-primary" value="Регистрация"/>
                 </div>
             </form>
         </div>
