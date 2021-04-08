@@ -8,7 +8,7 @@ import {Reg} from "./components/Reg";
 function App() {
     return (
             <BrowserRouter>
-                <Route exact path="/" render={() => <Menu/>}/>
+                <Menu/>
                 {/*<Route path="/create" render={() =>  }/>*/}
                 <Welcome/>
                 <Route path="/reg" render={()=><Reg/>}/>
