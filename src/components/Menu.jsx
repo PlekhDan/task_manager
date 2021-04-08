@@ -1,5 +1,6 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
+import s from "./Dashboard/DashboardSection.module.css"
 
 export class Menu extends React.Component {
     render() {

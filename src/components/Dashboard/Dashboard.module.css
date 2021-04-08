@@ -1,1 +1,5 @@
-
+.block {
+    display: flex;
+    padding: 0 2rem;
+    /*background-color: cornflowerblue;*/
+}
