@@ -1,12 +1,17 @@
 import React from "react";
 import s from "./Task.module.css"
+import {TaskView} from "./TaskView";
+import {Link} from "react-router-dom";
 
 export class Task extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            title: ""
+            id: "",
+            title: "",
+            text: "",
+            date_added: ""
         }
     }
 
@@ -19,16 +24,19 @@ export class Task extends React.Component {
         }).then(response => response.json())
             .then(result => {
                 this.setState({
-                    title: result.title
+                    id: result.id,
+                    title: result.title,
+                    text: result.text,
+                    date_added: result.date_added
                 })
             })
     }
 
     render() {
         return (
-            <div className={s.block}>
-                <h6>{this.state.title}</h6>
-            </div>
+            <Link to={`/task/${this.props.id}`} className={s.block}>
+                <h6>{this.props.title}</h6>
+            </Link>
         );
     }
 }
