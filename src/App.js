@@ -10,7 +10,7 @@ import {Task} from "./components/Dashboard/Task";
 function App() {
     return (
             <BrowserRouter>
-                <Route path="/" render={() => <Menu/>}/>
+                <Menu/>
                 {/*<Route path="/create" render={() =>  }/>*/}
                 {/*<Route exact path="/" render={()=><Welcome/>}/>*/}
                 <Route path="/reg" render={()=><Reg/>}/>
