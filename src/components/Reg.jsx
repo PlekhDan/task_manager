@@ -2,15 +2,16 @@ import React from 'react';
 
 
 export class Reg extends React.Component{
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.handleInputChange = this.handleInputChange.bind(this);
         this.sendForm = this.sendForm.bind(this);
         this.state = {
             name:"",
             lastname:"",
             email:"",
-            pass:""
+            pass:"",
+            info:""
         }
     }
 
@@ -21,7 +22,7 @@ export class Reg extends React.Component{
         formData.append("lastname",this.state.lastname);
         formData.append("email",this.state.email);
         formData.append("pass",this.state.pass);
-        fetch("http://ilgamgsy.beget.tech/php/handlerReg.php",{
+        fetch("http://o90576od.beget.tech/handlerReg",{
             method: "POST",
             body: formData
         }).then(response=>response.json())
@@ -35,7 +36,7 @@ export class Reg extends React.Component{
         if (name === "email"){
             const formData = new FormData();
             formData.append("email",value);
-            fetch("http://ilgamgsy.beget.tech/php/checkEmail.php",{
+            fetch("http://o90576od.beget.tech/handlerReg",{
                 method: "POST",
                 body: formData
             }).then(response=>response.json())
