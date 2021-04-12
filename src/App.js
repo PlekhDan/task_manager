@@ -13,10 +13,10 @@ function App() {
             <BrowserRouter>
                 <Menu/>
                 {/*<Route path="/create" render={() =>  }/>*/}
-                {/*<Route exact path="/" render={()=><Welcome/>}/>*/}
+                <Route exact path="/" render={()=><Welcome/>}/>
                 <Route path="/reg" render={()=><Reg/>}/>
                 <Route path="/auth" render={()=><Auth/>}/>
-                <Route path="/" render={()=><Dashboard/>}/>
+                <Route path="/board" render={()=><Dashboard/>}/>
                 <Route path="/task/:id" render={(props) => <TaskView {...props} /> } />
             </BrowserRouter>
     );

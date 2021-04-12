@@ -1,5 +1,6 @@
 import React from 'react';
 import {Dashboard} from "./Dashboard/Dashboard";
+import {Redirect} from "react-router";
 
 export class Auth extends React.Component{
     constructor(props) {
@@ -7,7 +8,8 @@ export class Auth extends React.Component{
         this.state = {
             email: "",
             pass: "",
-            info: ""
+            info: "",
+            result:""
         }
         this.handleInput = this.handleInput.bind(this);
         this.handleSubmit= this.handleSubmit.bind(this);
@@ -32,6 +34,7 @@ export class Auth extends React.Component{
             .then(result=>{
                 if(result.result == "success"){
                     this.setState({
+                        result: "success"
                     })
 
                 }else{
@@ -42,6 +45,9 @@ export class Auth extends React.Component{
             });
     }
     render() {
+        if (this.state.result === "success") {
+            return <Redirect to="/board"/>;
+        }
         return (
 
                 <div className="col-sm-5 my-3 mx-auto">
