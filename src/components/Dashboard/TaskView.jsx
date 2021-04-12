@@ -1,28 +1,50 @@
 import React from "react";
+import s from "./Task.module.css";
+import {Link} from "react-router-dom";
 
 export class TaskView extends React.Component {
 
     constructor(props) {
         super(props);
+        console.log(props);
+        this.state = {
+            id: "",
+            title: "",
+            text: "",
+            date_added: ""
+        }
+    }
+
+    componentDidMount() {
+        const formData = new FormData;
+        formData.append("id", this.props.match.params.id);
+        fetch("http://p9152834.beget.tech/php/getIdArticle.php", {
+            method: "POST",
+            body: formData
+        }).then(response => response.json())
+            .then(result => {
+                this.setState( {
+                    id: result.id,
+                    title: result.title,
+                    text: result.text,
+                    date_added: result.date_added
+                })
+
+            })
     }
 
     render() {
         return (
             <div className="container">
-                <button type="button" className="btn btn-primary" data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop">
-                    Launch static backdrop modal
-                </button>
-                <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
-                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div className={s.modal}>
                     <div className="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
                         <div className="modal-content">
                             <div className="modal-header row">
                                 <div className="col m-3 pb-3">
-                                    <h5 className="modal-title" id="staticBackdropLabel">Заголовок задачи</h5>
+                                    <h5 className="modal-title" id="staticBackdropLabel">{this.state.title}</h5>
                                 </div>
                                 <div className="col-auto m-3">
-                                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"/>
+                                    <Link to="/" className="btn-close"/>
                                 </div>
                                 <div className="row">
                                     <div className="col-auto">
@@ -43,32 +65,15 @@ export class TaskView extends React.Component {
 
                             <div className="modal-body m-3">
                                     <div className="px-5">
-                                    <p>Полное описание задачи</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam aut
-                                        consequuntur
-                                        eius in itaque magnam nulla officiis, provident quas, repudiandae similique
-                                        voluptas
-                                        voluptatibus. Deleniti doloribus iste laboriosam nam vel veritatis!
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam aut
-                                        consequuntur
-                                        eius in itaque magnam nulla officiis, provident quas, repudiandae similique
-                                        voluptas
-                                        voluptatibus. Deleniti doloribus iste laboriosam nam vel veritatis!
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam aut
-                                        consequuntur
-                                        eius in itaque magnam nulla officiis, provident quas, repudiandae similique
-                                        voluptas
-                                        voluptatibus. Deleniti doloribus iste laboriosam nam vel veritatis!
-                                    </p>
+                                        <p>{this.state.text}</p>
                                     </div>
                             </div>
                             <div className="modal-footer me-3">
-                                <p>Создано: </p>
+                                <p>Создано: {this.state.date_added}</p>
 
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         );

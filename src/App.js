@@ -5,16 +5,17 @@ import {Welcome} from "./components/Welcome";
 import {Dashboard} from "./components/Dashboard/Dashboard";
 import {Reg} from "./components/Reg";
 import {TaskView} from "./components/Dashboard/TaskView";
+import {Task} from "./components/Dashboard/Task";
 
 function App() {
     return (
             <BrowserRouter>
-                <Route exact path="/" render={() => <Menu/>}/>
+                <Route path="/" render={() => <Menu/>}/>
                 {/*<Route path="/create" render={() =>  }/>*/}
-                <Welcome/>
+                {/*<Route exact path="/" render={()=><Welcome/>}/>*/}
                 <Route path="/reg" render={()=><Reg/>}/>
-                <Dashboard/>
-                <TaskView/>
+                <Route path="/" render={()=><Dashboard/>}/>
+                <Route path="/task/:id" render={(props) => <TaskView {...props} /> } />
             </BrowserRouter>
     );
 }
