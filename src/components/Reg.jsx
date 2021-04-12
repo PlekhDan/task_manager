@@ -36,7 +36,7 @@ export class Reg extends React.Component{
         if (name === "email"){
             const formData = new FormData();
             formData.append("email",value);
-            fetch("http://o90576od.beget.tech/changeReg",{
+            fetch("http://o90576od.beget.tech/checkReg",{
                 method: "POST",
                 body: formData
             }).then(response=>response.json())
