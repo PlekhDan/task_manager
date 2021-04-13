@@ -12,8 +12,7 @@ export class Reg extends React.Component{
             email:"",
             pass:"",
             info:"",
-            redirect: false,
-            submitBtn: "disabled"
+            redirect: false
         }
     }
 
@@ -37,14 +36,7 @@ export class Reg extends React.Component{
     handleInputChange(event){
         const value = event.target.value;
         const name = event.target.name;
-        this.setState({
-            [name]: value
-        })
         if (name === "email"){
-            if (value === "") {
-                this.setState({submitBtn: "disabled"});
-                return;
-            }
             const formData = new FormData();
             formData.append("email",value);
             fetch("http://o90576od.beget.tech/checkReg",{
@@ -54,17 +46,18 @@ export class Reg extends React.Component{
                 .then(result=>{
                     if(result.result === "exist"){
                         this.setState({
-                            info: "Такая почта существует!",
-                            submitBtn: "disabled"
+                            info: "Такая почта существует!"
                         })
                     }else{
                         this.setState({
-                            info: "",
-                            submitBtn: ""
+                            info: ""
                         })
                     }
                 });
         }
+        this.setState({
+            [name]: value
+        })
     }
     render() {
         if(this.state.redirect)
@@ -86,7 +79,7 @@ export class Reg extends React.Component{
                     <input value={this.state.pass} onChange={this.handleInputChange} name="pass" type="password" className="form-control" placeholder="Пароль"/>
                 </div>
                 <div className="mb-3">
-                    <input type="submit" disabled={this.state.submitBtn} className="form-control btn btn-primary" value="Регистрация"/>
+                    <input type="submit" className="form-control btn btn-primary" value="Регистрация"/>
                 </div>
             </form>
         </div>
