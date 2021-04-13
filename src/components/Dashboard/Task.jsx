@@ -34,7 +34,7 @@ export class Task extends React.Component {
 
     render() {
         return (
-            <Link to={`/task/${this.props.id}`} className={s.block}>
+            <Link to={`/dashboard/task/${this.props.id}`} className={s.block}>
                 <h6>{this.props.title}</h6>
             </Link>
         );

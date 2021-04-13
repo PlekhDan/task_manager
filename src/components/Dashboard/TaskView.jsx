@@ -2,6 +2,8 @@ import React from "react";
 import s from "./Task.module.css";
 import {Link} from "react-router-dom";
 
+
+
 export class TaskView extends React.Component {
 
     constructor(props) {
@@ -44,7 +46,7 @@ export class TaskView extends React.Component {
                                     <h5 className="modal-title" id="staticBackdropLabel">{this.state.title}</h5>
                                 </div>
                                 <div className="col-auto m-3">
-                                    <Link to="/" className="btn-close"/>
+                                    <Link to="/dashboard" className="btn-close"/>
                                 </div>
                                 <div className="row">
                                     <div className="col-auto">

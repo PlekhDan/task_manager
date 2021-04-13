@@ -46,7 +46,7 @@ export class Auth extends React.Component{
     }
     render() {
         if (this.state.result === "success") {
-            return <Redirect to="/board"/>;
+            return <Redirect to="/dashboard"/>;
         }
         return (
 
