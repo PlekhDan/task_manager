@@ -8,7 +8,7 @@ import {DashboardSectionDone} from "./DashboardSectionDone";
 export class Dashboard extends React.Component {
     render() {
         return(
-            <div className={s.block}>
+            <div className="d-flex px-5 mb-5">
                 <div className="col-3">
                     <DashboardSectionToDo/>
                 </div>

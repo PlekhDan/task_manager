@@ -34,8 +34,11 @@ export class Task extends React.Component {
 
     render() {
         return (
-            <Link to={`/dashboard/task/${this.props.id}`} className={s.block}>
-                <h6>{this.props.title}</h6>
+            // class={s.block} className="btn btn-outline-success me-3 my-1 text-nowrap" to="/cabinet" type="submit"
+            <Link className="d-flex flex-column btn btn-primary my-3" to={`/dashboard/task/${this.props.id}`} type="submit">
+                <div className="p-3 text-center">
+                    <h6>{this.props.title}</h6>
+                </div>
             </Link>
         );
     }
