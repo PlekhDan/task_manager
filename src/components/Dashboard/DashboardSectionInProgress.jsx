@@ -29,7 +29,7 @@ export class DashboardSectionInProgress extends React.Component {
 
     render() {
         return (
-            <div className={s.block}>
+            <div className="border border-primary rounded mx-2 pb-4 px-4 text-center">
                 <h4 className="py-4">In progress</h4>
                 {this.state.tasks}
             </div>

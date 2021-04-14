@@ -8,17 +8,17 @@ import {DashboardSectionDone} from "./DashboardSectionDone";
 export class Dashboard extends React.Component {
     render() {
         return(
-            <div className={s.block}>
-                <div className="col-3">
+            <div className="d-flex flex-wrap px-5 mb-5">
+                <div className="col-lg-3 col-md-6 col-sm-12 mb-3">
                     <DashboardSectionToDo/>
                 </div>
-                <div className="col-3">
+                <div className="col-lg-3 col-md-6 col-sm-12 mb-3">
                     <DashboardSectionInProgress/>
                 </div>
-                <div className="col-3">
+                <div className="col-lg-3 col-md-6 col-sm-12 mb-3">
                     <DashboardSectionTesting/>
                 </div>
-                <div className="col-3">
+                <div className="col-lg-3 col-md-6 col-sm-12 mb-3">
                     <DashboardSectionDone/>
                 </div>
             </div>
