@@ -18,7 +18,7 @@ export class Task extends React.Component {
     componentDidMount() {
         const formData = new FormData;
         formData.append("id", this.props.id);
-        fetch("http://p9152834.beget.tech/php/getIdArticle.php", {
+        fetch("http://p9152834.beget.tech/getIdArticle", {
             method: "POST",
             body: formData
         }).then(response => response.json())
@@ -34,7 +34,7 @@ export class Task extends React.Component {
 
     render() {
         return (
-            // class={s.block} className="btn btn-outline-success me-3 my-1 text-nowrap" to="/cabinet" type="submit"
+            // class={s.block}
             <Link className="d-flex flex-column btn btn-primary my-3" to={`/dashboard/task/${this.props.id}`} type="submit">
                 <div className="p-3 text-center">
                     <h6>{this.props.title}</h6>

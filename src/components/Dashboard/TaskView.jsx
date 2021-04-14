@@ -1,13 +1,12 @@
 import React from "react";
 import s from "./Task.module.css";
-import {Link, NavLink} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 
 export class TaskView extends React.Component {
 
     constructor(props) {
         super(props);
-        console.log(props);
         this.state = {
             id: "",
             title: "",
@@ -57,55 +56,26 @@ export class TaskView extends React.Component {
                                         </button>
                                         <div className="collapse navbar-collapse" id="navbarText">
                                             <div className="d-grid gap-2 d-lg-flex">
-                                                <Link className="btn btn-outline-primary" to="/auth" type="submit">Редактировать</Link>
-                                                <Link className="btn btn-outline-danger" to="/auth" type="submit">Удалить</Link>
+                                                <Link className="btn btn-outline-primary" to="#" type="submit">Редактировать</Link>
+                                                <Link className="btn btn-outline-danger" to="#" type="submit">Удалить</Link>
                                             </div>
                                             <ul className="navbar-nav me-auto mb-2 mb-lg-0"/>
                                             <div className="d-grid gap-2 d-lg-flex">
-                                                <Link className="btn btn-outline-primary text-nowrap" to="/auth" type="submit">Начать выполнение</Link>
-                                                <Link className="btn btn-outline-primary" to="/auth" type="submit">Тестировать</Link>
-                                                <Link className="btn btn-outline-success" to="/auth" type="submit">Выполнено</Link>
+                                                <Link className="btn btn-outline-primary text-nowrap" to="#" type="submit">Начать выполнение</Link>
+                                                <Link className="btn btn-outline-primary" to="#" type="submit">Тестировать</Link>
+                                                <Link className="btn btn-outline-success" to="#" type="submit">Выполнено</Link>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                             <div className="modal-body m-3">
                                 <div className="px-5">
                                     <p>{this.state.text}</p>
-                                    {/*<p>*/}
-                                    {/*    There can be no thought of finishing for ‘aiming for the stars.’ Both*/}
-                                    {/*    figuratively and*/}
-                                    {/*    literally, it is a task to occupy the generations. And no matter how much*/}
-                                    {/*    progress one*/}
-                                    {/*    makes, there is always the thrill of just beginning.*/}
-                                    {/*    There can be no thought of finishing for ‘aiming for the stars.’ Both*/}
-                                    {/*    figuratively and*/}
-                                    {/*    literally, it is a task to occupy the generations. And no matter how much*/}
-                                    {/*    progress one*/}
-                                    {/*    makes, there is always the thrill of just beginning.*/}
-                                    {/*    There can be no thought of finishing for ‘aiming for the stars.’ Both*/}
-                                    {/*    figuratively and*/}
-                                    {/*    literally, it is a task to occupy the generations. And no matter how much*/}
-                                    {/*    progress one*/}
-                                    {/*    makes, there is always the thrill of just beginning.*/}
-                                    {/*    There can be no thought of finishing for ‘aiming for the stars.’ Both*/}
-                                    {/*    figuratively and*/}
-                                    {/*    literally, it is a task to occupy the generations. And no matter how much*/}
-                                    {/*    progress one*/}
-                                    {/*    makes, there is always the thrill of just beginning.*/}
-                                    {/*    There can be no thought of finishing for ‘aiming for the stars.’ Both*/}
-                                    {/*    figuratively and*/}
-                                    {/*    literally, it is a task to occupy the generations. And no matter how much*/}
-                                    {/*    progress one*/}
-                                    {/*    makes, there is always the thrill of just beginning.*/}
-                                    {/*</p>*/}
                                 </div>
                             </div>
                             <div className="modal-footer me-3">
                                 <p>Создано: {this.state.date_added}</p>
-
                             </div>
                         </div>
                     </div>
