@@ -24,13 +24,11 @@ export class TaskView extends React.Component {
         }).then(response => response.json())
             .then(result => {
                 const date = new Date(result.date_added);
-                // date.toLocaleDateString();
                 console.log(result);
                 this.setState({
                     id: result.id,
                     title: result.title,
                     text: result.text,
-                    // date_added: result.date_added
                     date_added: date.toLocaleDateString()
                 })
 
