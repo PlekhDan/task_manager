@@ -32,13 +32,17 @@ export class Menu extends React.Component {
         }
         if (true) { // если путь === "/"  || путь === "/auth"
             this.setState({
-                reg: <NavLink className="btn btn-outline-primary me-3 mb-2" to="/reg"
-                              type="submit">Регистрация</NavLink>,
+                reg: <NavLink className="btn btn-outline-primary me-3 my-2" to="/reg" type="submit">Регистрация</NavLink>,
             })
         }
         if (true) { // если путь === "/"  || путь === "/reg"
             this.setState({
-                auth: <NavLink className="btn btn-outline-primary mb-2" to="auth" type="submit">Войти</NavLink>,
+                auth: <NavLink className="btn btn-outline-primary me-3 my-2" to="auth" type="submit">Войти</NavLink>,
+            })
+        }
+        if (true) { // если путь === "/"  || путь === "/create"
+            this.setState({
+                create: <NavLink className="btn btn-outline-success my-2" to="/create" type="submit">Создать задачу</NavLink>,
             })
         }
     }
@@ -75,14 +79,14 @@ export class Menu extends React.Component {
                                 aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"/>
                         </button>
-                        <div className=" collapse navbar-collapse" id="navbarSupportedContent">
+                        <div className=" collapse navbar-collapse py-3" id="navbarSupportedContent">
                             <div className="me-auto"/>
-                            <form className="">
-                                <NavLink className="btn btn-outline-primary me-3" to="/reg"
-                                         type="submit">Регистрация</NavLink>
-                                <NavLink className="btn btn-outline-primary" to="auth" type="submit">Войти</NavLink>
-                                {/*<NavLink className="btn btn-outline-success ms-3" to="/create" type="submit">Создать задачу</NavLink>*/}
-                            </form>
+                                <div>
+                                    {this.state.reg}
+                                    {this.state.auth}
+                                    {this.state.cabinet}
+                                    {this.state.create}
+                                </div>
                         </div>
                     </div>
                 </nav>
