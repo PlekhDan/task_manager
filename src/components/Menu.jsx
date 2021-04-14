@@ -20,17 +20,20 @@ export class Menu extends React.Component {
     componentDidMount() {
         if (true) { // если путь === "/dashboard"
             this.setState({
-                create: <NavLink className="btn btn-outline-success me-3 my-1 text-nowrap" to="/create" type="submit">Создать задачу</NavLink>,
+                create: <NavLink className="btn btn-outline-success me-3 my-1 text-nowrap" to="/create" type="submit">Создать
+                    задачу</NavLink>,
             })
         }
         if (true) { // если путь === "/dashboard"
             this.setState({
-                cabinet: <NavLink className="btn btn-outline-success me-3 my-1 text-nowrap" to="/cabinet" type="submit">Личный кабинет</NavLink>,
+                cabinet: <NavLink className="btn btn-outline-success me-3 my-1 text-nowrap" to="/cabinet" type="submit">Личный
+                    кабинет</NavLink>,
             })
         }
         if (true) { // если путь === "/"  || путь === "/auth"
             this.setState({
-                reg: <NavLink className="btn btn-outline-primary me-3 my-1" to="/reg" type="submit">Регистрация</NavLink>,
+                reg: <NavLink className="btn btn-outline-primary me-3 my-1" to="/reg"
+                              type="submit">Регистрация</NavLink>,
             })
         }
         if (true) { // если путь === "/"  || путь === "/reg"
@@ -43,7 +46,6 @@ export class Menu extends React.Component {
     render() {
         return (
             <div className="mb-5">
-
                 <nav className="navbar navbar-expand-md navbar-light bg-light rounded-bottom shadow p-3 mb-5 bg-white rounded">
                     <div className="container">
                         <a className="navbar-brand me-3 mb-2" href="/"><h1>tsk_mngr</h1></a>
@@ -62,7 +64,6 @@ export class Menu extends React.Component {
                                 {this.state.auth}
                                 {this.state.cabinet}
                             </div>
-
                         </div>
                     </div>
                 </nav>
