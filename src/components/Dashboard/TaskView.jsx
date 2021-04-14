@@ -23,11 +23,13 @@ export class TaskView extends React.Component {
             body: formData
         }).then(response => response.json())
             .then(result => {
+                const date = new Date(result.date_added);
+                console.log(result);
                 this.setState({
                     id: result.id,
                     title: result.title,
                     text: result.text,
-                    date_added: result.date_added
+                    date_added: date.toLocaleDateString()
                 })
 
             })
