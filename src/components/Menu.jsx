@@ -20,25 +20,25 @@ export class Menu extends React.Component {
     componentDidMount() {
         if (true) { // если путь === "/dashboard"
             this.setState({
-                create: <NavLink className="btn btn-outline-success me-3 my-1 text-nowrap" to="/create" type="submit">Создать
+                create: <NavLink className="btn btn-outline-success text-nowrap" to="/create" type="submit">Создать
                     задачу</NavLink>,
             })
         }
         if (true) { // если путь === "/dashboard"
             this.setState({
-                cabinet: <NavLink className="btn btn-outline-success me-3 my-1 text-nowrap" to="/cabinet" type="submit">Личный
+                cabinet: <NavLink className="btn btn-outline-success text-nowrap" to="/cabinet" type="submit">Личный
                     кабинет</NavLink>,
             })
         }
         if (true) { // если путь === "/"  || путь === "/auth"
             this.setState({
-                reg: <NavLink className="btn btn-outline-primary me-3 my-1" to="/reg"
+                reg: <NavLink className="btn btn-outline-primary" to="/reg"
                               type="submit">Регистрация</NavLink>,
             })
         }
         if (true) { // если путь === "/"  || путь === "/reg"
             this.setState({
-                auth: <NavLink className="btn btn-outline-primary me-3 my-1" to="/auth" type="submit">Войти</NavLink>,
+                auth: <NavLink className="btn btn-outline-primary" to="/auth" type="submit">Войти</NavLink>,
             })
         }
     }
