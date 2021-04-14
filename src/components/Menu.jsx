@@ -43,7 +43,6 @@ export class Menu extends React.Component {
     render() {
         return (
             <div className="mb-5">
-
                 <nav className="navbar navbar-expand-md navbar-light bg-light rounded-bottom shadow p-3 mb-5 bg-white rounded">
                     <div className="container">
                         <a className="navbar-brand me-3 mb-2" href="/"><h1>tsk_mngr</h1></a>
@@ -62,7 +61,6 @@ export class Menu extends React.Component {
                                 {this.state.auth}
                                 {this.state.cabinet}
                             </div>
-
                         </div>
                     </div>
                 </nav>
