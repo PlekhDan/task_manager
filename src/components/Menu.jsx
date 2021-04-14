@@ -42,7 +42,7 @@ export class Menu extends React.Component {
         }
         if (true) { // если путь === "/"  || путь === "/create"
             this.setState({
-                create: <NavLink className="btn btn-outline-success my-2" to="/create" type="submit">Создать задачу</NavLink>,
+                create: <NavLink className="btn btn-outline-success me-3 my-2" to="/create" type="submit">Создать задачу</NavLink>,
             })
         }
     }
@@ -81,11 +81,11 @@ export class Menu extends React.Component {
                         </button>
                         <div className=" collapse navbar-collapse py-3" id="navbarSupportedContent">
                             <div className="me-auto"/>
-                                <div>
+                                <div className="d-grid gap-2 d-md-flex">
                                     {this.state.reg}
                                     {this.state.auth}
-                                    {this.state.cabinet}
-                                    {this.state.create}
+                                    {/*{this.state.cabinet}*/}
+                                    {/*{this.state.create}*/}
                                 </div>
                         </div>
                     </div>
