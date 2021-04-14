@@ -50,7 +50,7 @@ export class Reg extends React.Component{
 
     render() {
         if(this.state.redirect)
-            return <Redirect to="/" />
+            return <Redirect to="/auth" />
         else
         return <div className="col-sm-5 my-3 mx-auto">
             <form onSubmit={this.handleSubmit}>
