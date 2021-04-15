@@ -1,6 +1,5 @@
 import React from "react";
 import s from "./Task.module.css"
-import {TaskView} from "./TaskView";
 import {Link} from "react-router-dom";
 
 export class Task extends React.Component {

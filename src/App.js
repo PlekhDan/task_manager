@@ -18,8 +18,8 @@ function App() {
                 <Route path="/reg" render={()=><Reg/>}/>
                 <Route path="/auth" render={()=><Auth/>}/>
                 <Route path="/cabinet" render={()=><Cabinet/>}/>
-                <Route path="/board" render={()=><Dashboard/>}/>
-                <Route path="/task/:id" render={(props) => <TaskView {...props} /> } />
+                <Route path="/dashboard" render={()=><Dashboard/>}/>
+                <Route path="/dashboard/task/:id" render={(props) => <TaskView {...props} /> } />
             </BrowserRouter>
     );
 }
