@@ -8,12 +8,13 @@ import {TaskView} from "./components/Dashboard/TaskView";
 import {Task} from "./components/Dashboard/Task";
 import {Auth} from "./components/Auth";
 import {Cabinet} from "./components/Cabinet";
+import {Create} from "./components/Create";
 
 function App() {
     return (
             <BrowserRouter>
                 <Menu/>
-                {/*<Route path="/create" render={() =>  }/>*/}
+                <Route path="/create" render={()=><Create/>}/>
                 <Route exact path="/" render={()=><Welcome/>}/>
                 <Route path="/reg" render={()=><Reg/>}/>
                 <Route path="/auth" render={()=><Auth/>}/>
