@@ -42,8 +42,11 @@ export class Create extends React.Component {
                 <div className={s.modal}>
                     <div className="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
                         <div className="modal-content">
-                            <div className="modal-header row m-3">
-                                <div className="col-auto mb-3">
+                            <div className="modal-header row m-1">
+                                <div className="col-auto mb-1">
+                                    <h5 className="modal-title">Создание задачи</h5>
+                                </div>
+                                <div className="col-auto mb-1">
                                     <Link to="/dashboard" className="btn-close"/>
                                 </div>
                             </div>
