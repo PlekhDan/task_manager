@@ -36,7 +36,7 @@ export class Task extends React.Component {
             // class={s.block}
             <Link className="d-flex flex-column btn btn-primary my-3" to={`/dashboard/task/${this.props.id}`} type="submit">
                 <div className="p-3 text-center">
-                    <h6>{this.props.title}</h6>
+                    <h6>Задача{this.props.title}</h6>
                 </div>
             </Link>
         );

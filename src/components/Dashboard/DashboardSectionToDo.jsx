@@ -12,7 +12,8 @@ export class DashboardSectionToDo extends React.Component {
     }
 
     componentDidMount() {
-        fetch("http://p9152834.beget.tech/php/getArticles.php")
+        //fetch("http://p9152834.beget.tech/php/getArticles.php")
+        fetch("http://localhost/getArticles")
             .then(response => response.json())
             .then(result => {
                 this.setState({
