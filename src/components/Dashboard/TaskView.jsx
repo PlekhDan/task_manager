@@ -1,35 +1,93 @@
 import React from "react";
 import s from "./Task.module.css";
 import {Link} from "react-router-dom";
+import {ResultContext} from "./Dashboard";
 
 
 export class TaskView extends React.Component {
 
     constructor(props) {
         super(props);
+        this.submitDone = this.submitDone.bind(this);
+        this.submitTesting = this.submitTesting.bind(this);
+        this.submitProgress = this.submitProgress.bind(this);
+        this.changeCategory = this.changeCategory.bind(this);
+        this.submitRemove = this.submitRemove.bind(this);
         this.state = {
             id: "",
             title: "",
             text: "",
-            date_added: ""
+            date_added: "",
+            category: ""
         }
+    }
+
+    changeCategory(event, categoryId) {
+        event.preventDefault();
+        const formData = new FormData;
+        formData.append("categoryId", categoryId);
+        formData.append("id", this.state.id)
+        fetch("http://localhost/changeCategory", {
+            method: "POST",
+            body: formData
+        }).then(response => response.json())
+            .then(result => {
+                console.log(result);
+            })
+    }
+
+    // newCategory = ResultContext.Provider.find(item => item.name === "Медицина").id
+
+    // submitEdit(event) {
+    //     event.preventDefault();
+    // }
+    //
+    submitRemove(event) {
+        event.preventDefault();
+        const formData = new FormData;
+        formData.append("id", this.state.id);
+        fetch("http://localhost/removeArticle", {
+            method: "POST",
+            body: formData
+        }).then(response => response.json())
+            .then(result => {
+                console.log("remove");
+            })
+    }
+
+    submitProgress(event) {
+        const categoryId = ResultContext.Provider.find(item => item.name === "Медицина").id;
+        this.changeCategory(event, categoryId);
+    }
+
+    submitTesting(event) {
+        const categoryId = ResultContext.Provider.find(item => item.name === "Спорт").id;
+        this.changeCategory(event, categoryId);
+    }
+
+    submitDone(event) {
+        const categoryId = ResultContext.Provider.find(item => item.name === "Образование").id;
+        this.changeCategory(event, categoryId);
     }
 
     componentDidMount() {
         const formData = new FormData;
         formData.append("id", this.props.match.params.id);
-        fetch("http://p9152834.beget.tech/getIdArticle", {
+        fetch("http://localhost/getIdArticle", {
             method: "POST",
             body: formData
         }).then(response => response.json())
             .then(result => {
+                // console.log(result);
+                const parser = new DOMParser();
+                const html = parser.parseFromString(result.text, "text/html");
                 const date = new Date(result.date_added);
-                console.log(result);
                 this.setState({
                     id: result.id,
                     title: result.title,
-                    text: result.text,
-                    date_added: date.toLocaleDateString()
+                    text: html.body.innerText,
+                    date_added: date.toLocaleDateString(),
+                    category: result.category
                 })
 
             })
@@ -58,14 +116,20 @@ export class TaskView extends React.Component {
                                         </button>
                                         <div className="collapse navbar-collapse" id="navbarText">
                                             <div className="d-grid gap-2 d-lg-flex">
-                                                <Link className="btn btn-outline-primary" to="#" type="submit">Редактировать</Link>
-                                                <Link className="btn btn-outline-danger" to="#" type="submit">Удалить</Link>
+                                                <input onClick={this.submitEdit} type="submit"
+                                                       className="btn btn-outline-primary" value="Редактировать"/>
+                                                <input onClick={this.submitRemove} type="submit"
+                                                       className="btn btn-outline-danger" value="Удалить"/>
                                             </div>
                                             <ul className="navbar-nav me-auto mb-2 mb-lg-0"/>
                                             <div className="d-grid gap-2 d-lg-flex">
-                                                <Link className="btn btn-outline-primary text-nowrap" to="#" type="submit">Начать выполнение</Link>
-                                                <Link className="btn btn-outline-primary" to="#" type="submit">Тестировать</Link>
-                                                <Link className="btn btn-outline-success" to="#" type="submit">Выполнено</Link>
+                                                <input onClick={this.submitProgress} type="submit"
+                                                       className="btn btn-outline-primary text-nowrap"
+                                                       value="Начать выполнение"/>
+                                                <input onClick={this.submitTesting} type="submit"
+                                                       className="btn btn-outline-primary" value="Тестировать"/>
+                                                <input onClick={this.submitDone} type="submit"
+                                                       className="btn btn-outline-success" value="Выполнено"/>
                                             </div>
                                         </div>
                                     </div>
