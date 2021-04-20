@@ -2,7 +2,38 @@ import React from "react";
 import s from "./Task.module.css";
 import {Link} from "react-router-dom";
 import {ResultContext} from "./Dashboard";
+import {host} from "../../config";
 
+
+// class EditTaskInput extends React.Component {
+//     constructor(props) {
+//         super(props);
+//         // console.log(ResultContext.Provider);
+//         this.state = {
+//             editTask: ""
+//         }
+//     }
+//
+//     handlerInput(event) {
+//
+//     }
+//
+//     render() {
+//         console.log(this.props);
+//         return (
+//             <textarea onChange={this.handlerInput}
+//                       value={this.props.value}
+//                       name="newCategory"
+//                       rows="8"
+//                       className="form-control mb-4"
+//                       placeholder="text"/>
+//         );
+//     }
+// }
+
+// function SubmitEditListener(props) {
+//
+// }
 
 export class TaskView extends React.Component {
 
@@ -13,6 +44,8 @@ export class TaskView extends React.Component {
         this.submitProgress = this.submitProgress.bind(this);
         this.changeCategory = this.changeCategory.bind(this);
         this.submitRemove = this.submitRemove.bind(this);
+        // this.submitEdit = this.submitEdit.bind(this);
+        this.updateText = this.updateText.bind(this);
         this.state = {
             id: "",
             title: "",
@@ -22,12 +55,39 @@ export class TaskView extends React.Component {
         }
     }
 
+    handlerInput(event) {
+        const name = event.target.name;
+        const value = event.target.value;
+        this.setState({
+            [name]: value
+        })
+    }
+
+    updateText() {
+        this.setState({
+            text: <div>
+                <textarea
+                    onChange={this.handlerInput}
+                    value={this.state.text}
+                    name="text"
+                    rows="8"
+                    className="form-control mb-4"
+                    placeholder="text"/>
+                <input type="submit"
+                       className="btn btn-outline-primary me-2" value="Отменить"/>
+                <input type="submit"
+                       className="btn btn-outline-success" value="Сохранить"/>
+            </div>
+
+        })
+    }
+
     changeCategory(event, categoryId) {
         event.preventDefault();
         const formData = new FormData;
         formData.append("categoryId", categoryId);
         formData.append("id", this.state.id)
-        fetch("http://localhost/changeCategory", {
+        fetch(host+"/changeCategory", {
             method: "POST",
             body: formData
         }).then(response => response.json())
@@ -36,17 +96,19 @@ export class TaskView extends React.Component {
             })
     }
 
-    // newCategory = ResultContext.Provider.find(item => item.name === "Медицина").id
-
     // submitEdit(event) {
     //     event.preventDefault();
+    //     console.log("Edit");
+    //     this.setState({
+    //         edit: <EditTaskInput value={this.state.text}/>
+    //     })
     // }
-    //
+
     submitRemove(event) {
         event.preventDefault();
         const formData = new FormData;
         formData.append("id", this.state.id);
-        fetch("http://localhost/removeArticle", {
+        fetch(host+"/removeArticle", {
             method: "POST",
             body: formData
         }).then(response => response.json())
@@ -73,7 +135,7 @@ export class TaskView extends React.Component {
     componentDidMount() {
         const formData = new FormData;
         formData.append("id", this.props.match.params.id);
-        fetch("http://localhost/getIdArticle", {
+        fetch(host+"/getIdArticle", {
             method: "POST",
             body: formData
         }).then(response => response.json())
@@ -116,8 +178,10 @@ export class TaskView extends React.Component {
                                         </button>
                                         <div className="collapse navbar-collapse" id="navbarText">
                                             <div className="d-grid gap-2 d-lg-flex">
-                                                <input onClick={this.submitEdit} type="submit"
+                                                <input onClick={this.updateText} type="submit"
                                                        className="btn btn-outline-primary" value="Редактировать"/>
+                                                {/*<input onClick={this.updateMessage} type="submit"*/}
+                                                {/*       className="btn btn-outline-danger" value="Тест"/>*/}
                                                 <input onClick={this.submitRemove} type="submit"
                                                        className="btn btn-outline-danger" value="Удалить"/>
                                             </div>
@@ -137,7 +201,7 @@ export class TaskView extends React.Component {
                             </div>
                             <div className="modal-body m-3">
                                 <div className="px-5">
-                                    <p>{this.state.text}</p>
+                                    <div>{this.state.text}</div>
                                 </div>
                             </div>
                             <div className="modal-footer me-3">

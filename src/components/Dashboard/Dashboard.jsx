@@ -1,10 +1,8 @@
 import React from "react";
-import {DashboardSectionToDo} from "./DashboardSectionToDo";
-import {DashboardSectionInProgress} from "./DashboardSectionInProgress";
 import s from "./Dashboard.module.css";
-import {DashboardSectionTesting} from "./DashboardSectionTesting";
-import {DashboardSectionDone} from "./DashboardSectionDone";
 import {Task} from "./Task";
+import {host} from "../../config";
+
 
 
 export const ResultContext = React.createContext([]);
@@ -31,11 +29,9 @@ export class Dashboard extends React.Component {
     }
 
     componentDidMount() {
-        fetch("http://localhost/getCategory")
+        fetch(host+"/getCategory")
             .then(response => response.json())
             .then(result => {
-                ResultContext.Provider = result;
-                console.log(ResultContext);
                 this.setState({
                     sections: result.map(section => {
                         return (
@@ -43,7 +39,6 @@ export class Dashboard extends React.Component {
                                 key={section.id}
                                 id={section.id}
                                 name={section.name}
-                                arr={result}
                             />
                         );
                     })

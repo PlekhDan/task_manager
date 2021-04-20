@@ -2,6 +2,7 @@ import React from "react";
 import s from "./Task.module.css"
 import {Link} from "react-router-dom";
 import {TaskView} from "./TaskView";
+import {host} from "../../config";
 
 
 
@@ -30,7 +31,7 @@ export class Task extends React.Component {
     componentDidMount() {
         const formData = new FormData;
         formData.append("id", this.props.id);
-        fetch("http://localhost/getOneCategory", {
+        fetch(host+"/getOneCategory", {
             method: "POST",
             body: formData
         }).then(response => response.json())
@@ -41,7 +42,6 @@ export class Task extends React.Component {
                         const html = parser.parseFromString(ot.title, "text/html");
                         return (
                             <OneTask
-                                arr={this.props}
                                 key={ot.id}
                                 id={ot.id}
                                 title={html.body.innerText.slice(0, 14) + " ..."}
