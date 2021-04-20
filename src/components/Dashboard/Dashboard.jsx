@@ -11,8 +11,8 @@ export const ResultContext = React.createContext([]);
 
 function DashboardSection(props) {
     return (
-        <div className="d-flex flex-column col-lg-3 col-md-6 col-sm-10 h-100 bg-info">
-            <div className="border border-primary rounded pb-2 px-4 text-center m-2 h-100 overflow-auto">
+        <div className="col-lg-3 col-md-6 col-sm-12 p-2 text-center h-100">
+            <div className="border border-primary rounded w-100 px-3 h-100 overflow-hidden">
                 <h4 className="py-4">{props.name}</h4>
                 <Task {...props}/>
             </div>
@@ -53,10 +53,8 @@ export class Dashboard extends React.Component {
 
     render() {
         return (
-            <div className="container" style={{height: "75vh"}}>
-                {/*<div className=" h-100">*/}
-                    {this.state.sections}
-                {/*</div>*/}
+            <div className="container d-flex flex-wrap p-0" style={{height: "75vh"}}>
+                {this.state.sections}
             </div>
         );
     }

@@ -3,10 +3,11 @@ import s from "./Task.module.css"
 import {Link} from "react-router-dom";
 import {TaskView} from "./TaskView";
 
+
+
 function OneTask(props) {
-    // console.log(props.arr.arr);
     return (
-        <Link className="d-flex flex-column btn btn-primary mb-3" to={`/dashboard/task/${props.id}`}
+        <Link className="btn btn-primary mb-3 w-100" to={`/dashboard/task/${props.id}`}
               type="submit">
             <div className="p-3 text-center">
                 <h6>{props.title}</h6>
@@ -15,11 +16,12 @@ function OneTask(props) {
     );
 }
 
+
+
 export class Task extends React.Component {
 
     constructor(props) {
         super(props);
-        // console.log(props);
         this.state = {
             tasks: []
         }
@@ -52,27 +54,10 @@ export class Task extends React.Component {
             })
     }
 
-    // componentDidMount() {
-    //     const formData = new FormData;
-    //     formData.append("id", this.props.id);
-    //     fetch("http://p9152834.beget.tech/getIdArticle", {
-    //         method: "POST",
-    //         body: formData
-    //     }).then(response => response.json())
-    //         .then(result => {
-    //             this.setState({
-    //                 id: result.id,
-    //                 title: result.title,
-    //                 text: result.text,
-    //                 date_added: result.date_added
-    //             })
-    //         })
-    // }
-
     render() {
         return (
             // class={s.block}
-            <div className="">
+            <div className="h-100 overflow-auto">
                 <h6>{this.state.tasks}</h6>
             </div>
         );
