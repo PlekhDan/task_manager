@@ -1,6 +1,8 @@
 import React from "react";
 import s from "./Dashboard/Task.module.css";
-
+import {host} from "../config";
+import {DashboardSectionInProgress} from "./Dashboard/DashboardSectionInProgress";
+import {DashboardSectionDone} from "./Dashboard/DashboardSectionDone";
 
 
 
@@ -9,9 +11,7 @@ export class Cabinet extends React.Component{
         super(props);
         this.state = {
             name: "",
-            email: "",
             lastname: "",
-            pass: "",
         }
         this.handleInput = this.handleInput.bind(this);
         this.handleSubmit= this.handleSubmit.bind(this);
@@ -29,8 +29,7 @@ export class Cabinet extends React.Component{
         const formData = new FormData();
         formData.append("name",this.state.name);
         formData.append("lastname",this.state.lastname);
-        formData.append("pass",this.state.pass);
-        fetch("http://o90576od.beget.tech/handlerReg",{/* тут для изменения данных в БД*/
+        fetch(host + "/handlerChangeUserData",{/* тут для изменения данных в БД (пароль не хешируется?)*/
             method: "POST",
             body: formData
         })
@@ -41,7 +40,7 @@ export class Cabinet extends React.Component{
     }
 
     componentDidMount() {
-        fetch("http://ku4keee.beget.tech/php/getUser.php",{/* тут для получения данных о сессии в БД*/
+        fetch(host + "/getUser",{/* тут для получения данных о сессии в БД*/
             credentials: 'include'
         })
             .then(response=>response.json())
@@ -49,7 +48,7 @@ export class Cabinet extends React.Component{
                 if(result.result !== "error"){
                     this.setState({
                         name: result.name,
-                        email: result.email
+                        lastname: result.lastname
                     })
                 }
             })
@@ -69,12 +68,8 @@ export class Cabinet extends React.Component{
                                         <input value={this.state.name} onChange={this.handleInput} type="text" className="form-control" name="name" placeholder="Имя" aria-label="Username" aria-describedby="basic-addon1"/>
                                     </div>
                                     <div className="input-group mb-3">
-                                        <span className="input-group-text" id="basic-addon1">{this.state.email}</span>
+                                        <span className="input-group-text" id="basic-addon1">{this.state.lastname}</span>
                                         <input value={this.state.lastname} onChange={this.handleInput} type="text" className="form-control" name="lastname" placeholder="Фамилия" aria-label="Username" aria-describedby="basic-addon1"/>
-                                    </div>
-                                    <div className="input-group mb-3">
-                                        <span className="input-group-text" id="basic-addon1">Пароль</span>
-                                        <input value={this.state.pass} onChange={this.handleInput} type="password" name="password" className="form-control" placeholder="Пароль" aria-label="Username" aria-describedby="basic-addon1"/>
                                     </div>
                                     <input type="submit" className="btn btn-primary" value="Сохранить изменения"/>
                                 </form>
@@ -83,13 +78,11 @@ export class Cabinet extends React.Component{
                     </div>
                     <div className="col-sm-6 my-2">
                         <div className="row">
-                            <div className="col-sm-12" className={s.block}>
-                                <h2 className="text-center">Задачи в разработке,Задачи в разработке,Задачи в разработке,Задачи в разработке
-                                    Задачи в разработке,Задачи в разработке,Задачи в разработке,Задачи в разработке</h2>
+                            <div className="col-sm-12 mb-3" style={{height: '250px', overflow: "auto"}}>
+                                <DashboardSectionInProgress/>
                             </div>
-                            <div className="col-sm-12" className={s.block}>
-                                <h2 className="text-center">Сделанные задачи,Сделанные задачи,Сделанные задачи,Сделанные задачи
-                                    Сделанные задачи,Сделанные задачи,Сделанные задачи,Сделанные задачи</h2>
+                            <div className="col-sm-12 mb-3" style={{height: '250px', overflow: "auto"}}>
+                                <DashboardSectionDone/>
                             </div>
                         </div>
                     </div>
