@@ -51,7 +51,7 @@ export class TaskView extends React.Component {
             title: "",
             text: "",
             date_added: "",
-            category: ""
+            status: ""
         }
     }
 
@@ -82,12 +82,12 @@ export class TaskView extends React.Component {
         })
     }
 
-    changeCategory(event, categoryId) {
+    changeCategory(event, statusId) {
         event.preventDefault();
         const formData = new FormData;
-        formData.append("categoryId", categoryId);
+        formData.append("statusId", statusId);
         formData.append("id", this.state.id)
-        fetch(host+"/changeCategory", {
+        fetch(host+"/changeStatus", {
             method: "POST",
             body: formData
         }).then(response => response.json())
@@ -108,7 +108,7 @@ export class TaskView extends React.Component {
         event.preventDefault();
         const formData = new FormData;
         formData.append("id", this.state.id);
-        fetch(host+"/removeArticle", {
+        fetch(host+"/removeTask", {
             method: "POST",
             body: formData
         }).then(response => response.json())
@@ -118,29 +118,28 @@ export class TaskView extends React.Component {
     }
 
     submitProgress(event) {
-        const categoryId = ResultContext.Provider.find(item => item.name === "Медицина").id;
-        this.changeCategory(event, categoryId);
+        const statusId = ResultContext.Provider.find(item => item.value === "in process").id;
+        this.changeCategory(event, statusId);
     }
 
     submitTesting(event) {
-        const categoryId = ResultContext.Provider.find(item => item.name === "Спорт").id;
-        this.changeCategory(event, categoryId);
+        const statusId = ResultContext.Provider.find(item => item.value === "testing").id;
+        this.changeCategory(event, statusId);
     }
 
     submitDone(event) {
-        const categoryId = ResultContext.Provider.find(item => item.name === "Образование").id;
-        this.changeCategory(event, categoryId);
+        const statusId = ResultContext.Provider.find(item => item.value === "done").id;
+        this.changeCategory(event, statusId);
     }
 
     componentDidMount() {
         const formData = new FormData;
         formData.append("id", this.props.match.params.id);
-        fetch(host+"/getIdArticle", {
+        fetch(host+"/getIdTask", {
             method: "POST",
             body: formData
         }).then(response => response.json())
             .then(result => {
-                // console.log(result);
                 const parser = new DOMParser();
                 const html = parser.parseFromString(result.text, "text/html");
                 const date = new Date(result.date_added);
@@ -149,7 +148,7 @@ export class TaskView extends React.Component {
                     title: result.title,
                     text: html.body.innerText,
                     date_added: date.toLocaleDateString(),
-                    category: result.category
+                    status: result.status
                 })
 
             })

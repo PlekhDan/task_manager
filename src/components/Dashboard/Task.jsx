@@ -31,7 +31,7 @@ export class Task extends React.Component {
     componentDidMount() {
         const formData = new FormData;
         formData.append("id", this.props.id);
-        fetch(host+"/getOneCategory", {
+            fetch(host+"/getOneStatus", {
             method: "POST",
             body: formData
         }).then(response => response.json())
