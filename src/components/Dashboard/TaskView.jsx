@@ -3,37 +3,71 @@ import s from "./Task.module.css";
 import {Link} from "react-router-dom";
 import {ResultContext} from "./Dashboard";
 import {host} from "../../config";
+import {findAllByDisplayValue} from "@testing-library/react";
 
 
-// class EditTaskInput extends React.Component {
-//     constructor(props) {
-//         super(props);
-//         // console.log(ResultContext.Provider);
-//         this.state = {
-//             editTask: ""
-//         }
-//     }
-//
-//     handlerInput(event) {
-//
-//     }
-//
-//     render() {
-//         console.log(this.props);
-//         return (
-//             <textarea onChange={this.handlerInput}
-//                       value={this.props.value}
-//                       name="newCategory"
-//                       rows="8"
-//                       className="form-control mb-4"
-//                       placeholder="text"/>
-//         );
-//     }
-// }
+class EditTaskInput extends React.Component {
+    constructor(props) {
+        super(props);
+        console.log(this);
+        this.handlerInput = this.handlerInput.bind(this);
+        this.submitCancel = this.submitCancel.bind(this);
+        this.state = {
+            editTask: `${this.props.parent}`
+        }
+    }
 
-// function SubmitEditListener(props) {
-//
-// }
+    handlerInput(event) {
+        const name = event.target.name;
+        const value = event.target.value;
+        console.log(this.state.editTask);
+        this.setState({
+            [name]: value
+        });
+        this.setState({
+            editTask: value
+        })
+    }
+
+    submitCancel(event) {
+        event.preventDefault();
+        console.log("Отменить");
+        console.log(this.props.parent);
+        this.setState({
+            editTask: "Старый текст"
+        })
+    }
+
+    submitSave(event) {
+        event.preventDefault();
+        console.log("Сохнанить");
+    }
+
+    // componentDidMount() {
+    //     // console.log(this.props.parent);
+    // }
+
+    render() {
+        return (
+            <form>
+                <textarea
+                    onChange={this.handlerInput}
+                    value={this.state.editTask}
+                    name="text" rows="8"
+                    className="form-control mb-4"
+                    placeholder="Новый текст задачи"/>
+                <input onClick={this.submitCancel} type="submit"
+                       className="btn btn-outline-primary me-2" value="Отменить"/>
+                <input onClick={this.submitSave} type="submit"
+                       className="btn btn-outline-success" value="Сохранить"/>
+            </form>
+        );
+    }
+}
+
+
+
+
 
 export class TaskView extends React.Component {
 
@@ -44,41 +78,21 @@ export class TaskView extends React.Component {
         this.submitProgress = this.submitProgress.bind(this);
         this.changeCategory = this.changeCategory.bind(this);
         this.submitRemove = this.submitRemove.bind(this);
-        // this.submitEdit = this.submitEdit.bind(this);
         this.updateText = this.updateText.bind(this);
         this.state = {
             id: "",
             title: "",
             text: "",
             date_added: "",
-            status: ""
+            status: "",
+            oldText: ""
         }
-    }
-
-    handlerInput(event) {
-        const name = event.target.name;
-        const value = event.target.value;
-        this.setState({
-            [name]: value
-        })
     }
 
     updateText() {
         this.setState({
-            text: <div>
-                <textarea
-                    onChange={this.handlerInput}
-                    value={this.state.text}
-                    name="text"
-                    rows="8"
-                    className="form-control mb-4"
-                    placeholder="text"/>
-                <input type="submit"
-                       className="btn btn-outline-primary me-2" value="Отменить"/>
-                <input type="submit"
-                       className="btn btn-outline-success" value="Сохранить"/>
-            </div>
-
+            text: <EditTaskInput parent={this.state.text} old={this.state.title}/>,
+            oldText: "oldText"
         })
     }
 
@@ -95,14 +109,6 @@ export class TaskView extends React.Component {
                 console.log(result);
             })
     }
-
-    // submitEdit(event) {
-    //     event.preventDefault();
-    //     console.log("Edit");
-    //     this.setState({
-    //         edit: <EditTaskInput value={this.state.text}/>
-    //     })
-    // }
 
     submitRemove(event) {
         event.preventDefault();
@@ -179,8 +185,6 @@ export class TaskView extends React.Component {
                                             <div className="d-grid gap-2 d-lg-flex">
                                                 <input onClick={this.updateText} type="submit"
                                                        className="btn btn-outline-primary" value="Редактировать"/>
-                                                {/*<input onClick={this.updateMessage} type="submit"*/}
-                                                {/*       className="btn btn-outline-danger" value="Тест"/>*/}
                                                 <input onClick={this.submitRemove} type="submit"
                                                        className="btn btn-outline-danger" value="Удалить"/>
                                             </div>
