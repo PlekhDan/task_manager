@@ -1,5 +1,6 @@
 import React from 'react';
 import {Redirect} from "react-router-dom";
+import {host} from "../config";
 
 export class Reg extends React.Component{
     constructor(props) {
@@ -30,7 +31,7 @@ export class Reg extends React.Component{
         formData.append("lastname",this.state.lastname);
         formData.append("email",this.state.email);
         formData.append("pass",this.state.pass);
-        fetch("http://o90576od.beget.tech/handlerReg",{
+        fetch(host + "/handlerReg",{
             method: "POST",
             body: formData
         })

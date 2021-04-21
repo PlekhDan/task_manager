@@ -3,6 +3,7 @@ import s from "./Create.module.css";
 import {Link} from "react-router-dom";
 import SunEditor from "suneditor-react";
 import 'suneditor/dist/css/suneditor.min.css';
+import {host} from "../config";
 
 export class Create extends React.Component {
 
@@ -29,7 +30,7 @@ export class Create extends React.Component {
         const formData = new FormData();
         formData.append("title",this.state.title);
         formData.append("text",this.state.text);
-        fetch("http://o90576od.beget.tech/addPost",{
+        fetch(host + "/addPost",{
             method: "POST",
             body: formData
         }).then(response=>response.json())
