@@ -32,6 +32,7 @@ export class Task extends React.Component {
         const formData = new FormData;
         formData.append("id", this.props.id);
             fetch(host+"/getOneStatus", {
+            credentials: 'include',
             method: "POST",
             body: formData
         }).then(response => response.json())
@@ -44,7 +45,7 @@ export class Task extends React.Component {
                             <OneTask
                                 key={ot.id}
                                 id={ot.id}
-                                title={html.body.innerText.slice(0, 14) + " ..."}
+                                title={html.body.innerText.slice(0, 13) + " ..."}
                                 text={ot.text}
                                 date_added={ot.date_added}
                             />

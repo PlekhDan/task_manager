@@ -3,6 +3,8 @@
 class Tasks{
 
   static function getStatus(){
+    header("Access-Control-Allow-Origin: http://localhost:3000");
+    header('Access-Control-Allow-Credentials: true');
     global $mysqli;
 	$result = $mysqli->query("SELECT * FROM `status`");
 	$status = [];
@@ -13,8 +15,12 @@ class Tasks{
   }
 
   static function getOneStatus($id){
+    header("Access-Control-Allow-Origin: http://localhost:3000");
+    header('Access-Control-Allow-Credentials: true');
     global $mysqli;
-	$result = $mysqli->query("SELECT tasks.id, tasks.title, tasks.text, tasks.date_added, status.value AS statusid FROM `tasks`,`clients`,`status` WHERE clients.id = tasks.userid AND status.id=tasks.statusid AND status.id=$id");
+    session_start();
+    $sessid = $_SESSION['id'];
+	$result = $mysqli->query("SELECT tasks.id, tasks.title, tasks.text, tasks.date_added, status.value AS statusid FROM `tasks`,`clients`,`status` WHERE clients.id = '$sessid' AND status.id=tasks.statusid AND status.id=$id AND tasks.userid = '$sessid'");
     $status = [];
       while($row = $result->fetch_assoc()){
         $status[] = $row;
