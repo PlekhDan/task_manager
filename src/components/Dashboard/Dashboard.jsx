@@ -10,7 +10,7 @@ function DashboardSection(props) {
     return (
         <div className="col-lg-3 col-md-6 col-sm-12 p-2 text-center h-100">
             <div className="border border-primary rounded w-100 px-3 h-100 overflow-hidden">
-                <h4 className="py-4">{props.value}</h4>
+                <h4 className="py-4">{props.name}</h4>
                 <Task {...props}/>
             </div>
         </div>
@@ -40,6 +40,7 @@ export class Dashboard extends React.Component {
                                 key={section.id}
                                 id={section.id}
                                 value={section.value}
+                                name={section.name}
                             />
                         );
                     })
