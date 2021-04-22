@@ -67,8 +67,8 @@ export class Cabinet extends React.Component{
 
 
     render() {
-        let redirect = this.state.redirect
-        if(redirect) return <Redirect to="/cabinet"/>
+        if (this.state.redirect == true)
+            return <Cabinet/>;
         else
             return(
                 <div className="container">
