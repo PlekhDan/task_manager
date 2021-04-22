@@ -3,7 +3,7 @@ import s from "./Task.module.css";
 import {Link} from "react-router-dom";
 import {ResultContext} from "./Dashboard";
 import {host} from "../../config";
-import {findAllByDisplayValue} from "@testing-library/react";
+
 
 
 class EditTaskInput extends React.Component {
@@ -85,14 +85,12 @@ export class TaskView extends React.Component {
             text: "",
             date_added: "",
             status: "",
-            oldText: ""
         }
     }
 
     updateText() {
         this.setState({
-            text: <EditTaskInput parent={this.state.text} old={this.state.title}/>,
-            oldText: "oldText"
+            text: <EditTaskInput parent={this.state.text}/>
         })
     }
 
