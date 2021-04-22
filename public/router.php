@@ -1,7 +1,9 @@
 <?
-
+  session_start();	
   header("Access-Control-Allow-Origin: *");
   header('Content-type: text/html; charset=utf-8');
+  header("Access-Control-Allow-Origin: http://localhost:3000");
+  header('Access-Control-Allow-Credentials: true');
   $uri = explode('/',$_SERVER["REQUEST_URI"]);
   require_once('task_php/db.php'); // Параметры подключения к БД
   require_once('task_php/classes/Tasks.php');

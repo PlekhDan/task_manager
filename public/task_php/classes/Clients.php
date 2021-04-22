@@ -50,11 +50,12 @@ class Clients{
   
   static function handlerChangeUserData(){
     global $mysqli;
+	
     session_start();
-    $value = $_POST['value'];
-    $item = $_POST['item']; // Тут либо lastname либо name, (либо пароль?)
+    $name = $_POST['name'];
+    $lastname = $_POST['lastname']; // Тут либо lastname либо name, (либо пароль?)
     $id = $_SESSION['id'];
-    $mysqli->query("UPDATE `clients` SET `$item`='$value' WHERE `id`=$id");
+    $mysqli->query("UPDATE `clients` SET `name`='$name',`lastname`='$lastname' WHERE `id`=$id");
     $_SESSION[$item] = $value;
     echo json_encode(['result'=>'success']);
   }
