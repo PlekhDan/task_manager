@@ -1,8 +1,8 @@
 import React from "react";
 import s from "./Dashboard/Task.module.css";
 import {host} from "../config";
-import {DashboardSectionInProgress} from "./Dashboard/DashboardSectionInProgress";
-import {DashboardSectionDone} from "./Dashboard/DashboardSectionDone";
+// import {DashboardSectionInProgress} from "./Dashboard/DashboardSectionInProgress";
+// import {DashboardSectionDone} from "./Dashboard/DashboardSectionDone";
 
 
 
@@ -81,10 +81,10 @@ export class Cabinet extends React.Component{
                     <div className="col-sm-6 my-2">
                         <div className="row">
                             <div className="col-sm-12 mb-3" style={{height: '250px', overflow: "auto"}}>
-                                <DashboardSectionInProgress/>
+                                {/*<DashboardSectionInProgress/>*/}
                             </div>
                             <div className="col-sm-12 mb-3" style={{height: '250px', overflow: "auto"}}>
-                                <DashboardSectionDone/>
+                                {/*<DashboardSectionDone/>*/}
                             </div>
                         </div>
                     </div>
