@@ -31,7 +31,6 @@ export class Dashboard extends React.Component {
         fetch(host + "/getStatus")
             .then(response => response.json())
             .then(result => {
-                console.log(result);
                 ResultContext.Provider = result;
                 this.setState({
                     sections: result.map(section => {
