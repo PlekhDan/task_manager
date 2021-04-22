@@ -27,14 +27,14 @@ export class Auth extends React.Component{
         const formData = new FormData();
         formData.append("email",this.state.email);
         formData.append("pass",this.state.pass);
-        fetch(host + "/handlerAuth",{
+        fetch(host+"/handlerAuth",{
             credentials: 'include',
             method: "POST",
             body: formData
         })
             .then(response=>response.json())
             .then(result=>{
-                if(result.result == "success"){
+                if(result.result === "success"){
                     this.setState({
                         result: "success"
                     })

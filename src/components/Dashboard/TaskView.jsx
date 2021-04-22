@@ -1,35 +1,154 @@
 import React from "react";
 import s from "./Task.module.css";
 import {Link} from "react-router-dom";
+import {ResultContext} from "./Dashboard";
+import {host} from "../../config";
 
+
+// class EditTaskInput extends React.Component {
+//     constructor(props) {
+//         super(props);
+//         // console.log(ResultContext.Provider);
+//         this.state = {
+//             editTask: ""
+//         }
+//     }
+//
+//     handlerInput(event) {
+//
+//     }
+//
+//     render() {
+//         console.log(this.props);
+//         return (
+//             <textarea onChange={this.handlerInput}
+//                       value={this.props.value}
+//                       name="newCategory"
+//                       rows="8"
+//                       className="form-control mb-4"
+//                       placeholder="text"/>
+//         );
+//     }
+// }
+
+// function SubmitEditListener(props) {
+//
+// }
 
 export class TaskView extends React.Component {
 
     constructor(props) {
         super(props);
+        this.submitDone = this.submitDone.bind(this);
+        this.submitTesting = this.submitTesting.bind(this);
+        this.submitProgress = this.submitProgress.bind(this);
+        this.changeCategory = this.changeCategory.bind(this);
+        this.submitRemove = this.submitRemove.bind(this);
+        // this.submitEdit = this.submitEdit.bind(this);
+        this.updateText = this.updateText.bind(this);
         this.state = {
             id: "",
             title: "",
             text: "",
-            date_added: ""
+            date_added: "",
+            status: ""
         }
+    }
+
+    handlerInput(event) {
+        const name = event.target.name;
+        const value = event.target.value;
+        this.setState({
+            [name]: value
+        })
+    }
+
+    updateText() {
+        this.setState({
+            text: <div>
+                <textarea
+                    onChange={this.handlerInput}
+                    value={this.state.text}
+                    name="text"
+                    rows="8"
+                    className="form-control mb-4"
+                    placeholder="text"/>
+                <input type="submit"
+                       className="btn btn-outline-primary me-2" value="Отменить"/>
+                <input type="submit"
+                       className="btn btn-outline-success" value="Сохранить"/>
+            </div>
+
+        })
+    }
+
+    changeCategory(event, statusId) {
+        event.preventDefault();
+        const formData = new FormData;
+        formData.append("statusId", statusId);
+        formData.append("id", this.state.id)
+        fetch(host+"/changeStatus", {
+            method: "POST",
+            body: formData
+        }).then(response => response.json())
+            .then(result => {
+                console.log(result);
+            })
+    }
+
+    // submitEdit(event) {
+    //     event.preventDefault();
+    //     console.log("Edit");
+    //     this.setState({
+    //         edit: <EditTaskInput value={this.state.text}/>
+    //     })
+    // }
+
+    submitRemove(event) {
+        event.preventDefault();
+        const formData = new FormData;
+        formData.append("id", this.state.id);
+        fetch(host+"/removeTask", {
+            method: "POST",
+            body: formData
+        }).then(response => response.json())
+            .then(result => {
+                console.log("remove");
+            })
+    }
+
+    submitProgress(event) {
+        const statusId = ResultContext.Provider.find(item => item.value === "in process").id;
+        this.changeCategory(event, statusId);
+    }
+
+    submitTesting(event) {
+        const statusId = ResultContext.Provider.find(item => item.value === "testing").id;
+        this.changeCategory(event, statusId);
+    }
+
+    submitDone(event) {
+        const statusId = ResultContext.Provider.find(item => item.value === "done").id;
+        this.changeCategory(event, statusId);
     }
 
     componentDidMount() {
         const formData = new FormData;
         formData.append("id", this.props.match.params.id);
-        fetch("http://p9152834.beget.tech/getIdArticle", {
+        fetch(host+"/getIdTask", {
             method: "POST",
             body: formData
         }).then(response => response.json())
             .then(result => {
+                const parser = new DOMParser();
+                const html = parser.parseFromString(result.text, "text/html");
                 const date = new Date(result.date_added);
-                console.log(result);
                 this.setState({
                     id: result.id,
                     title: result.title,
-                    text: result.text,
-                    date_added: date.toLocaleDateString()
+                    text: html.body.innerText,
+                    date_added: date.toLocaleDateString(),
+                    status: result.status
                 })
 
             })
@@ -58,14 +177,22 @@ export class TaskView extends React.Component {
                                         </button>
                                         <div className="collapse navbar-collapse" id="navbarText">
                                             <div className="d-grid gap-2 d-lg-flex">
-                                                <Link className="btn btn-outline-primary" to="#" type="submit">Редактировать</Link>
-                                                <Link className="btn btn-outline-danger" to="#" type="submit">Удалить</Link>
+                                                <input onClick={this.updateText} type="submit"
+                                                       className="btn btn-outline-primary" value="Редактировать"/>
+                                                {/*<input onClick={this.updateMessage} type="submit"*/}
+                                                {/*       className="btn btn-outline-danger" value="Тест"/>*/}
+                                                <input onClick={this.submitRemove} type="submit"
+                                                       className="btn btn-outline-danger" value="Удалить"/>
                                             </div>
                                             <ul className="navbar-nav me-auto mb-2 mb-lg-0"/>
                                             <div className="d-grid gap-2 d-lg-flex">
-                                                <Link className="btn btn-outline-primary text-nowrap" to="#" type="submit">Начать выполнение</Link>
-                                                <Link className="btn btn-outline-primary" to="#" type="submit">Тестировать</Link>
-                                                <Link className="btn btn-outline-success" to="#" type="submit">Выполнено</Link>
+                                                <input onClick={this.submitProgress} type="submit"
+                                                       className="btn btn-outline-primary text-nowrap"
+                                                       value="Начать выполнение"/>
+                                                <input onClick={this.submitTesting} type="submit"
+                                                       className="btn btn-outline-primary" value="Тестировать"/>
+                                                <input onClick={this.submitDone} type="submit"
+                                                       className="btn btn-outline-success" value="Выполнено"/>
                                             </div>
                                         </div>
                                     </div>
@@ -73,7 +200,7 @@ export class TaskView extends React.Component {
                             </div>
                             <div className="modal-body m-3">
                                 <div className="px-5">
-                                    <p>{this.state.text}</p>
+                                    <div>{this.state.text}</div>
                                 </div>
                             </div>
                             <div className="modal-footer me-3">
