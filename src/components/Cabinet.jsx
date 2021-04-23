@@ -1,7 +1,7 @@
 import React from "react";
-import s from "./Dashboard/Task.module.css";
 import {host} from "../config";
 import {Redirect} from "react-router-dom";
+import {CabinetTask} from "./CabinetTask";
 
 
 
@@ -67,7 +67,7 @@ export class Cabinet extends React.Component{
 
 
     render() {
-        if (this.state.redirect == true)
+        if (this.state.redirect === true)
             return <Cabinet/>;
         else
             return(
@@ -90,15 +90,8 @@ export class Cabinet extends React.Component{
                                 </div>
                             </div>
                         </div>
-                        <div className="col-sm-6 my-2">
-                            <div className="row">
-                                <div className="col-sm-12 mb-3" style={{height: '250px', overflow: "auto"}}>
-                                    {/*<DashboardSectionInProgress/>*/}
-                                </div>
-                                <div className="col-sm-12 mb-3" style={{height: '250px', overflow: "auto"}}>
-                                    {/*<DashboardSectionDone/>*/}
-                                </div>
-                            </div>
+                        <div className="col-sm-6" style={{height: "80vh"}}>
+                            <CabinetTask/>
                         </div>
                     </div>
                 </div>
