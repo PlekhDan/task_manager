@@ -41,5 +41,13 @@ class Tasks{
     echo json_encode(['result'=>'success']);
   }
 
+  static function changeTask($id, $text){
+    global $mysqli;
+	$id = $_POST['id'];
+	$text = $_POST['text'];
+    $mysqli->query("UPDATE `tasks` SET `text`='$text' WHERE `id`=$id");
+    echo json_encode(['result'=>'success']);
+  }
+
 }
 ?>
