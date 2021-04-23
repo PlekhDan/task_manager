@@ -2,6 +2,7 @@ import React from "react";
 import s from "./Dashboard.module.css";
 import {Task} from "./Task";
 import {host} from "../../config";
+import {Menu} from "../Menu";
 
 
 export const ResultContext = React.createContext([]);
@@ -49,10 +50,13 @@ export class Dashboard extends React.Component {
     }
 
     render() {
-        return (
+        return (<div>
+                <Menu/>
             <div className="container d-flex flex-wrap p-0" style={{height: "75vh"}}>
                 {this.state.sections}
             </div>
+        </div>
+
         );
     }
 }

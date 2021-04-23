@@ -2,6 +2,7 @@ import React from 'react';
 import {Dashboard} from "./Dashboard/Dashboard";
 import {Redirect} from "react-router";
 import {host} from "../config";
+import {Menu} from "./Menu";
 
 export class Auth extends React.Component{
     constructor(props) {
@@ -51,22 +52,24 @@ export class Auth extends React.Component{
             return <Redirect to="/dashboard"/>;
         }
         return (
+                <div>
+                    <Menu/>
+                    <div className="col-sm-5 my-3 mx-auto">
+                        <form onSubmit={this.handleSubmit}>
+                            <div className="mb-3">
+                                <input value={this.state.email} onChange={this.handleInput} name="email" type="text" className="form-control" placeholder="Логин"/>
+                                <p style={{color:"red"}}>{this.state.info}</p>
+                            </div>
+                            <div className="mb-3">
+                                <input value={this.state.pass} onChange={this.handleInput} name="pass" type="password" className="form-control" placeholder="Пароль"/>
+                            </div>
+                            <div className="mb-3">
+                                <input type="submit" value="Войти" className="form-control btn btn-primary"/>
+                            </div>
+                        </form>
+                    </div>
+                </div>
 
-                <div className="col-sm-5 my-3 mx-auto">
-                    <form onSubmit={this.handleSubmit}>
-                        <div className="mb-3">
-                            <input value={this.state.email} onChange={this.handleInput} name="email" type="text" className="form-control" placeholder="Логин"/>
-                            <p style={{color:"red"}}>{this.state.info}</p>
-                        </div>
-                        <div className="mb-3">
-                            <input value={this.state.pass} onChange={this.handleInput} name="pass" type="password" className="form-control" placeholder="Пароль"/>
-                        </div>
-                        <div className="mb-3">
-                            <input type="submit" value="Войти" className="form-control btn btn-primary"/>
-                        </div>
-                    </form>
-
-            </div>
         )
     }
 }

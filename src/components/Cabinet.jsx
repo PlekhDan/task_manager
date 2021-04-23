@@ -2,6 +2,7 @@ import React from "react";
 import {host} from "../config";
 import {Redirect} from "react-router-dom";
 import {CabinetTask} from "./CabinetTask";
+import {Menu} from "./Menu";
 
 
 
@@ -71,30 +72,34 @@ export class Cabinet extends React.Component{
             return <Cabinet/>;
         else
             return(
-                <div className="container">
-                    <div className="row">
-                        <div className="col-sm-6 my-5">
-                            <div className="row">
-                                <div className="col-sm-10 my-5">
-                                    <form onSubmit={this.handleSubmit}>
-                                        <div className="input-group mb-3">
-                                            <span  className="input-group-text" id="basic-addon1">{this.state.fname}</span>
-                                            <input value={this.state.name} onChange={this.handleInput} type="text" className="form-control" name="name" placeholder="Имя"  aria-label="Username" aria-describedby="basic-addon1"/>
-                                        </div>
-                                        <div className="input-group mb-3">
-                                            <span className="input-group-text" id="basic-addon1">{this.state.flastname}</span>
-                                            <input value={this.state.lastname} onChange={this.handleInput} type="text" className="form-control" name="lastname" placeholder="Фамилия" aria-label="Username" aria-describedby="basic-addon1"/>
-                                        </div>
-                                        <input disabled={!this.state.lastname || !this.state.name} type="submit" className="btn btn-primary" value="Сохранить изменения"/>
-                                    </form>
+                <div>
+                    <Menu/>
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-sm-6 my-5">
+                                <div className="row">
+                                    <div className="col-sm-10 my-5">
+                                        <form onSubmit={this.handleSubmit}>
+                                            <div className="input-group mb-3">
+                                                <span  className="input-group-text" id="basic-addon1">{this.state.fname}</span>
+                                                <input value={this.state.name} onChange={this.handleInput} type="text" className="form-control" name="name" placeholder="Имя"  aria-label="Username" aria-describedby="basic-addon1"/>
+                                            </div>
+                                            <div className="input-group mb-3">
+                                                <span className="input-group-text" id="basic-addon1">{this.state.flastname}</span>
+                                                <input value={this.state.lastname} onChange={this.handleInput} type="text" className="form-control" name="lastname" placeholder="Фамилия" aria-label="Username" aria-describedby="basic-addon1"/>
+                                            </div>
+                                            <input disabled={!this.state.lastname || !this.state.name} type="submit" className="btn btn-primary" value="Сохранить изменения"/>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="col-sm-6" style={{height: "80vh"}}>
-                            <CabinetTask/>
+                            <div className="col-sm-6" style={{height: "80vh"}}>
+                                <CabinetTask/>
+                            </div>
                         </div>
                     </div>
                 </div>
+
             )
     }
 }

@@ -6,6 +6,9 @@ import {matchPath} from 'react-router-dom';
 import {withRouter} from "react-router";
 import {host} from "../config";
 
+
+
+
 export class Menu extends React.Component {
 
 
@@ -38,7 +41,7 @@ export class Menu extends React.Component {
                         exit:    <NavLink type="submit" className="btn btn-danger" to="/exit" onClick={this.handleUpdate}>Выход</NavLink>,
                         startpage: "dashboard"
                     })
-                }else{
+                }else if(result.result == "error"){
                     this.setState({
                         reg: <NavLink className="btn btn-outline-primary" to="/reg" type="submit" onClick={this.handleUpdate}>Регистрация</NavLink>,
                         auth: <NavLink className="btn btn-outline-primary" to="/auth" type="submit" onClick={this.handleUpdate}>Войти</NavLink>,

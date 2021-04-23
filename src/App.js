@@ -11,12 +11,12 @@ import {Cabinet} from "./components/Cabinet";
 import {Create} from "./components/Create";
 import {host} from "./config";
 import React from "react";
+import {Exit} from "./components/Exit";
 
 
 function App() {
     return (
             <BrowserRouter>
-                <Menu/>
                 <Route path="/create" render={()=><Create/>}/>
                 <Route exact path="/" render={()=><Welcome/>}/>
                 <Route path="/reg" render={()=><Reg/>}/>
@@ -27,24 +27,6 @@ function App() {
                 <Route path="/dashboard/task/:id" render={(props) => <TaskView {...props} /> } />
             </BrowserRouter>
     );
-}
-
-class Exit extends React.Component {
-
-    componentDidMount() {
-        fetch(host + "/destroySession",{
-            credentials: 'include'
-        })
-            .then(response=>response.json())
-            .then(result=>{
-                console.log(result);
-            })
-    }
-    render() {
-        return (
-            <Welcome/>
-        );
-    }
 }
 
 

@@ -1,9 +1,12 @@
 import React from "react";
 import s from "./Welcome.module.css";
+import {Menu} from "./Menu";
 
 export class Welcome extends React.Component {
     render() {
         return(
+            <div>
+                <Menu />
                 <div id="carouselExampleSlidesOnly" className="carousel slide" data-bs-ride="carousel">
                     <div className="carousel-inner">
                         <div className="carousel-item active">
@@ -17,6 +20,8 @@ export class Welcome extends React.Component {
                         </div>
                     </div>
                 </div>
+            </div>
+
 
         );
     }
