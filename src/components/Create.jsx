@@ -5,6 +5,7 @@ import SunEditor from "suneditor-react";
 import 'suneditor/dist/css/suneditor.min.css';
 import {host} from "../config";
 import {Menu} from "./Menu";
+import {Redirect} from "react-router";
 
 export class Create extends React.Component {
 
@@ -14,7 +15,8 @@ export class Create extends React.Component {
         this.state = {
             title: "",
             text: "",
-            date_added: ""
+            date_added: "",
+            result: ""
         }
         this.handlerInput = this.handlerInput.bind(this);
         this.handlerSubmit= this.handlerSubmit.bind(this);
@@ -37,10 +39,19 @@ export class Create extends React.Component {
             method: "POST",
             body: formData
         }).then(response=>response.json())
-            .then(result=>console.log(result));
+            .then(result=> {
+                if(result.result === "success"){
+                    this.setState({
+                        result: "success"
+                    })
+                }
+            });
     }
 
     render() {
+        if (this.state.result === "success") {
+            return <Redirect to="/dashboard"/>;
+        }
         return (
             <div>
                 <Menu/>
@@ -86,4 +97,5 @@ export class Create extends React.Component {
 
         );
     }
+
 }
