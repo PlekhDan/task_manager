@@ -46,7 +46,7 @@ export class Task extends React.Component {
                             <OneTask
                                 key={ot.id}
                                 id={ot.id}
-                                title={html.body.innerText.slice(0, 20) + " ..."}
+                                title={html.body.innerText.slice(0, 13) + " ..."}
                                 text={ot.text}
                                 date_added={ot.date_added}
                             />

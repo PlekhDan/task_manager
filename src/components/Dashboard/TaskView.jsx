@@ -13,6 +13,7 @@ class EditTaskInput extends React.Component {
         console.log(this);
         this.handlerInput = this.handlerInput.bind(this);
         this.submitCancel = this.submitCancel.bind(this);
+        this.submitSave = this.submitSave.bind(this);
         this.state = {
             editTask: `${this.props.parent}`
         }
@@ -30,18 +31,26 @@ class EditTaskInput extends React.Component {
         })
     }
 
-    submitCancel(event) {
+    submitCancel() {
         return <Redirect to="/dashboard"/>;
     }
 
     submitSave(event) {
         event.preventDefault();
-        console.log("Сохнанить");
+        // console.log("Сохнанить");
+        // console.log(this.state.id);
+        const formData = new FormData();
+        formData.append("id", this.props.id);
+        formData.append("text", this.state.editTask);
+        fetch(host+"/changeTask", {
+            method: "POST",
+            body: formData,
+            credentials: 'include'
+        }).then(response => response.json())
+            .then(result => {
+                console.log(this.state.editTask);
+            })
     }
-
-    // componentDidMount() {
-    //     // console.log(this.props.parent);
-    // }
 
     render() {
         return (
@@ -86,7 +95,7 @@ export class TaskView extends React.Component {
 
     updateText() {
         this.setState({
-            text: <EditTaskInput parent={this.state.text}/>
+            text: <EditTaskInput parent={this.state.text} id={this.state.id}/>
         })
     }
 
