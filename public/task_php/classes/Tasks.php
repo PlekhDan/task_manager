@@ -51,10 +51,11 @@ class Tasks{
 
   static function createTask($title, $text){
     global $mysqli;
+    $userid = $_SESSION['id'];
 	$title = $_POST['title'];
 	$text = $_POST['text'];
-    $mysqli->query("INSERT INTO `tasks`(`title`, `text`) VALUES ('$title','$text')");
-    echo json_encode(['result'=>'success']);
+    $mysqli->query("INSERT INTO `tasks`(`title`, `text`, `userid`) VALUES ('$title','$text', '$userid')");
+    echo json_encode($userid);
   }
 }
 ?>

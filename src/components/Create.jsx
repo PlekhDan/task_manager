@@ -33,6 +33,7 @@ export class Create extends React.Component {
         formData.append("title",this.state.title);
         formData.append("text",this.state.text);
         fetch(host + "/createTask",{
+            credentials: 'include',
             method: "POST",
             body: formData
         }).then(response=>response.json())
@@ -73,7 +74,7 @@ export class Create extends React.Component {
                                                 height="250px"/>
                                         </div>
                                         <div className="mb-3 text-center">
-                                            <input type="submit" className="btn btn-primary"/>
+                                            <input disabled={!this.state.title} type="submit" className="btn btn-primary"/>
                                         </div>
                                     </form>
                                 </div>
