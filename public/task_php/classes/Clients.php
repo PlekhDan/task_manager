@@ -64,6 +64,18 @@ class Clients{
 	}else{
 		echo json_encode(['result'=>'error']);
 	}
-  }	
+  }
+  static function checkSession() {
+    if(!empty($_SESSION['id'])){
+        echo json_encode(['result'=>'success']);
+    }else{
+        echo json_encode(['result'=>'error']);
+    }
+  }
+  static function destroySession() {
+     session_destroy();
+     echo json_encode(['result'=>'success']);
+  }
+
 }  
 ?>

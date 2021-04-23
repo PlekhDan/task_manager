@@ -19,6 +19,8 @@
     Tasks::getIdTask($_POST['id']);
   }else if($uri[1]=='removeTask'){
     Tasks::removeTask($_POST['id']);
+  }else if($uri[1]=='changeTask'){
+    Tasks::changeTask($_POST['id'],$_POST['text']);
   }
 
   else if($uri[1]=='handlerReg'){
@@ -30,7 +32,11 @@
   }else if($uri[1]=='checkReg'){  // не работает
     Clients::checkReg();
   }else if($uri[1]=='getUser'){
-    Clients::getUser();    
+    Clients::getUser();
+  }else if($uri[1]=='checkSession'){
+    Clients::checkSession();
+  }else if($uri[1]=='destroySession'){
+    Clients::destroySession();
   }else{
     require_once("index.html");
   }

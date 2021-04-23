@@ -6,7 +6,7 @@ import {host} from "../../config";
 
 export const ResultContext = React.createContext([]);
 
-function DashboardSection(props) {
+export function DashboardSection(props) {
     return (
         <div className="col-lg-3 col-md-6 col-sm-12 p-2 text-center h-100">
             <div className="border border-primary rounded w-100 px-3 h-100 overflow-hidden">
@@ -44,6 +44,7 @@ export class Dashboard extends React.Component {
                         );
                     })
                 })
+                console.log(result);
             })
     }
 
