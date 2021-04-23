@@ -1,8 +1,9 @@
 import React from "react";
 import s from "./Task.module.css";
-import {Link, Redirect} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {ResultContext} from "./Dashboard";
 import {host} from "../../config";
+import {Redirect} from "react-router";
 
 
 
@@ -30,18 +31,7 @@ class EditTaskInput extends React.Component {
     }
 
     submitCancel(event) {
-        event.preventDefault();
-        // return <Redirect to="/dashboard"/>
-        // return(
-        //     this.setState({
-        //         editTask: "Старый текст"
-        //     })
-        // );
-        // console.log("Отменить");
-        // console.log(this.props.parent);
-        // this.setState({
-        //     editTask: "Старый текст"
-        // })
+        return <Redirect to="/dashboard"/>;
     }
 
     submitSave(event) {
@@ -50,8 +40,6 @@ class EditTaskInput extends React.Component {
     }
 
     // componentDidMount() {
-
-    
     //     // console.log(this.props.parent);
     // }
 

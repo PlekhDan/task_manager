@@ -19,9 +19,6 @@ class Clients{
   
   static function handlerAuth(){
     global $mysqli;
-    header("Access-Control-Allow-Origin: http://localhost:3000");
-	header('Access-Control-Allow-Credentials: true');
-    session_start();
     $email = trim(mb_strtolower($_POST['email']));
     $pass = trim($_POST['pass']);
     $result = $mysqli->query("SELECT * FROM `clients` WHERE `email`='$email'");
@@ -50,10 +47,8 @@ class Clients{
   
   static function handlerChangeUserData(){
     global $mysqli;
-	
-    session_start();
     $name = $_POST['name'];
-    $lastname = $_POST['lastname']; // Тут либо lastname либо name, (либо пароль?)
+    $lastname = $_POST['lastname'];
     $id = $_SESSION['id'];
     $mysqli->query("UPDATE `clients` SET `name`='$name',`lastname`='$lastname' WHERE `id`=$id");
     $_SESSION[$item] = $value;
@@ -62,9 +57,6 @@ class Clients{
 
   static function getUser(){
     global $mysqli;
-    header("Access-Control-Allow-Origin: http://localhost:3000");
-    header('Access-Control-Allow-Credentials: true');
-    session_start();
     if(!empty($_SESSION['id'])){
 		$id = $_SESSION['id'];
 		$result = $mysqli->query("SELECT * FROM clients WHERE id='$id'");

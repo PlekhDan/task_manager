@@ -20,14 +20,12 @@ export class Menu extends React.Component {
     componentDidMount() {
         if (true) { // если путь === "/dashboard"
             this.setState({
-                create: <NavLink className="btn btn-outline-success text-nowrap" to="/create" type="submit">Создать
-                    задачу</NavLink>,
+                create: <NavLink className="btn btn-outline-success text-nowrap" to="/create" type="submit">Создать задачу</NavLink>,
             })
         }
         if (true) { // если путь === "/dashboard"
             this.setState({
-                cabinet: <NavLink className="btn btn-outline-success text-nowrap" to="/cabinet" type="submit">Личный
-                    кабинет</NavLink>,
+                cabinet: <NavLink className="btn btn-outline-success text-nowrap" to="/cabinet" type="submit">Личный кабинет</NavLink>,
             })
         }
         if (true) { // если путь === "/"  || путь === "/auth"
