@@ -21,6 +21,8 @@
     Tasks::removeTask($_POST['id']);
   }else if($uri[1]=='changeTask'){
     Tasks::changeTask($_POST['id'],$_POST['text']);
+  }else if($uri[1]=='createTask'){
+    Tasks::createTask($_POST['title'],$_POST['text']);	
   }
 
   else if($uri[1]=='handlerReg'){

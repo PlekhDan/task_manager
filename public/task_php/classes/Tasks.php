@@ -49,5 +49,12 @@ class Tasks{
     echo json_encode(['result'=>'success']);
   }
 
+  static function createTask($title, $text){
+    global $mysqli;
+	$title = $_POST['title'];
+	$text = $_POST['text'];
+    $mysqli->query("INSERT INTO `tasks`(`title`, `text`) VALUES ('$title','$text')");
+    echo json_encode(['result'=>'success']);
+  }
 }
 ?>

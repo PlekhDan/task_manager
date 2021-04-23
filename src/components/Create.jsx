@@ -10,6 +10,7 @@ export class Create extends React.Component {
 
     constructor(props) {
         super(props);
+        this.sunEditorRef = React.createRef();
         this.state = {
             title: "",
             text: "",
@@ -31,7 +32,7 @@ export class Create extends React.Component {
         const formData = new FormData();
         formData.append("title",this.state.title);
         formData.append("text",this.state.text);
-        fetch(host + "/addPost",{
+        fetch(host + "/createTask",{
             method: "POST",
             body: formData
         }).then(response=>response.json())
