@@ -42,7 +42,7 @@ export class Auth extends React.Component{
 
                 }else{
                     this.setState({
-                        info: "Такого пользователя не существует"
+                        info: "Неверно введен логин или пароль"
                     })
                 }
             });

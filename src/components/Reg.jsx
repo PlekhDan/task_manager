@@ -72,7 +72,7 @@ export class Reg extends React.Component{
                         <input value={this.state.pass} onChange={this.handleInput} name="pass" type="password" className="form-control" placeholder="Пароль"/>
                     </div>
                     <div className="mb-3">
-                        <input type="submit" className="form-control btn btn-primary" value="Регистрация"/>
+                        <input type="submit" disabled={!this.state.lastname || !this.state.name || !this.state.email || !this.state.pass} className="form-control btn btn-primary" value="Регистрация"/>
                     </div>
                 </form>
             </div>
