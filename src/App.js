@@ -17,7 +17,7 @@ import {Exit} from "./components/Exit";
 function App() {
     return (
             <BrowserRouter>
-                <Route path="/create" render={()=><Create/>}/>
+                <Route path="/dashboard/create" render={()=><Create/>}/>
                 <Route exact path="/" render={()=><Welcome/>}/>
                 <Route path="/reg" render={()=><Reg/>}/>
                 <Route path="/auth" render={()=><Auth/>}/>

@@ -36,7 +36,7 @@ export class Menu extends React.Component {
             .then(result=>{
                 if(result.result !== "error"){
                     this.setState({
-                        create: <NavLink className="btn btn-outline-success text-nowrap" to="/create" type="submit" onClick={this.handleUpdate}>Создать задачу</NavLink>,
+                        create: <NavLink className="btn btn-outline-success text-nowrap" to="/dashboard/create" type="submit" onClick={this.handleUpdate}>Создать задачу</NavLink>,
                         cabinet: <NavLink className="btn btn-outline-success text-nowrap" to="/cabinet" type="submit" onClick={this.handleUpdate}>Личный кабинет</NavLink>,
                         exit:    <NavLink type="submit" className="btn btn-danger" to="/exit" onClick={this.handleUpdate}>Выход</NavLink>,
                         startpage: "dashboard"
