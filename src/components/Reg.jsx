@@ -56,8 +56,9 @@ export class Reg extends React.Component{
         else
         return <div>
             <Menu/>
-            <div className="col-sm-5 my-3 mx-auto">
+            <div className="col-sm-5 my-5 mx-auto border rounded overflow-hidden shadow-sm p-3 mb-5 bg-white rounded">
                 <form onSubmit={this.handleSubmit}>
+                    <p className="fs-1 text-center">Регистрация</p>
                     <div className="mb-3">
                         <input value={this.state.name} onChange={this.handleInput} name="name" type="text" className="form-control" placeholder="Имя"/>
                     </div>

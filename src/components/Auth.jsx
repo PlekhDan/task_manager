@@ -54,8 +54,9 @@ export class Auth extends React.Component{
         return (
                 <div>
                     <Menu/>
-                    <div className="col-sm-5 my-3 mx-auto">
+                    <div className="col-sm-5 my-5 mx-auto border rounded overflow-hidden shadow-sm p-3 mb-5 bg-white rounded">
                         <form onSubmit={this.handleSubmit}>
+                            <p className="fs-1 text-center">Авторизация</p>
                             <div className="mb-3">
                                 <input value={this.state.email} onChange={this.handleInput} name="email" type="text" className="form-control" placeholder="Логин"/>
                                 <p style={{color:"red"}}>{this.state.info}</p>
