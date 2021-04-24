@@ -10,7 +10,7 @@ export const ResultContext = React.createContext([]);
 export function DashboardSection(props) {
     return (
         <div className="col-lg-3 col-md-6 col-sm-12 p-2 text-center h-100">
-            <div className="border border-primary rounded w-100 px-3 h-100 overflow-hidden">
+            <div className="border rounded w-100 px-3 h-100 overflow-hidden shadow-sm p-3 mb-5 bg-white rounded">
                 <h4 className="py-4">{props.name}</h4>
                 <Task {...props}/>
             </div>
