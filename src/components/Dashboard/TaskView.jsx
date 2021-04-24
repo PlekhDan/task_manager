@@ -169,14 +169,16 @@ export class TaskView extends React.Component {
                 <div className={s.modal}>
                     <div className="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
                         <div className="modal-content">
-                            <div className="modal-header row m-3">
-                                <div className="col-auto mb-3">
-                                    <h5 className="modal-title" id="staticBackdropLabel">{this.state.title}</h5>
+                            <div className="modal-header row">
+                                <div className="d-flex p-2 px-4">
+                                    <div className="d-flex mb-3 flex-fill">
+                                        <h5 className="modal-title" id="staticBackdropLabel">{this.state.title}</h5>
+                                    </div>
+                                    <div className="d-flex mb-3">
+                                        <Link to="/dashboard" className="btn-close"/>
+                                    </div>
                                 </div>
-                                <div className="col-auto mb-3">
-                                    <Link to="/dashboard" className="btn-close"/>
-                                </div>
-                                <div className="navbar navbar-expand-lg navbar-light">
+                                <div className="navbar navbar-expand-lg navbar-light px-4">
                                     <div className="container-fluid p-0">
                                         <button className="navbar-toggler mb-3" type="button" data-bs-toggle="collapse"
                                                 data-bs-target="#navbarText" aria-controls="navbarText"
@@ -205,12 +207,12 @@ export class TaskView extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="modal-body m-3">
-                                <div className="px-5">
+                            <div className="modal-body p-5" >
+                                <div className="">
                                     <div>{this.state.text}</div>
                                 </div>
                             </div>
-                            <div className="modal-footer me-3">
+                            <div className="modal-footer pe-4" style={{backgroundColor: "#f5f5f5"}}>
                                 <p>Создано: {this.state.date_added}</p>
                             </div>
                         </div>
