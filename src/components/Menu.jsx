@@ -57,7 +57,7 @@ export class Menu extends React.Component {
             <div className="mb-5">
                 <nav className="navbar navbar-expand-md navbar-light bg-light rounded-bottom shadow p-3 mb-5 bg-white rounded">
                     <div className="container">
-                        <a className="navbar-brand me-3 mb-2" href={this.state.startpage}><h1>tsk_mngr</h1></a>
+                        <NavLink className="navbar-brand me-3 mb-2" to={this.state.startpage}><h1>tsk_mngr</h1></NavLink>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false"
                                 aria-label="Toggle navigation">
