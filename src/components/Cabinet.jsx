@@ -77,8 +77,9 @@ export class Cabinet extends React.Component{
                     <div className="container">
                         <div className="row">
                             <div className="col-sm-6 my-5">
+                                <p className="fs-1 text-start">Личные данные</p>
                                 <div className="row">
-                                    <div className="col-sm-10 my-5">
+                                    <div className="col-sm-10 my-2">
                                         <form onSubmit={this.handleSubmit}>
                                             <div className="input-group mb-3">
                                                 <span  className="input-group-text" id="basic-addon1">{this.state.fname}</span>
