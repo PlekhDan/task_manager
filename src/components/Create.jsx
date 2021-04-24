@@ -1,10 +1,9 @@
 import React from "react";
-import s from "./Create.module.css";
+import s from "./Dashboard/Task.module.css";
 import {Link} from "react-router-dom";
 import SunEditor from "suneditor-react";
 import 'suneditor/dist/css/suneditor.min.css';
 import {host} from "../config";
-import {Menu} from "./Menu";
 import {Redirect} from "react-router";
 
 export class Create extends React.Component {
@@ -69,7 +68,6 @@ export class Create extends React.Component {
                                         </div>
                                     </div>
                                 </div>
-
                                 <div className="modal-body p-5">
                                     <form onSubmit={this.handlerSubmit}>
                                         <div className="mb-3">
@@ -92,7 +90,6 @@ export class Create extends React.Component {
                                                className="btn btn-outline-success" value="Сохранить"/>
                                     </form>
                                 </div>
-
                                 <div className="modal-footer pe-4" style={{backgroundColor: "#f5f5f5"}}>
                                     <p/>
                                 </div>
