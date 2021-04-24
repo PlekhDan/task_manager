@@ -1,5 +1,5 @@
 import React from "react";
-import s from "./Task.module.css";
+import s from "./Dashboard/Task.module.css";
 import {Link} from "react-router-dom";
 import SunEditor from "suneditor-react";
 import 'suneditor/dist/css/suneditor.min.css';
