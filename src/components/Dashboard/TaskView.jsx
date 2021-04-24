@@ -15,7 +15,8 @@ class EditTaskInput extends React.Component {
         this.submitCancel = this.submitCancel.bind(this);
         this.submitSave = this.submitSave.bind(this);
         this.state = {
-            editTask: `${this.props.parent}`
+            editTask: `${this.props.parent}`,
+            alert: ""
         }
     }
 
@@ -47,8 +48,12 @@ class EditTaskInput extends React.Component {
             body: formData,
             credentials: 'include'
         }).then(response => response.json())
-            .then(result => {
-                console.log(this.state.editTask);
+            .then(result=> {
+                if(result.result === "success"){
+                    this.setState({
+                        alert: <p className="text-start text-success">Изменения успешно сохранены</p>
+                    })
+                }
             })
     }
 
@@ -61,10 +66,12 @@ class EditTaskInput extends React.Component {
                     name="text" rows="8"
                     className="form-control mb-4"
                     placeholder="Новый текст задачи"/>
+
+                    {this.state.alert}
                 <input onClick={this.submitCancel} type="submit"
                        className="btn btn-outline-primary me-2" value="Отменить"/>
                 <input onClick={this.submitSave} type="submit"
-                       className="btn btn-outline-success" value="Сохранить"/>
+                       className="btn btn-outline-success" value="Сохранить" disabled={this.state.editTask === this.props.parent || !this.state.editTask}/>
             </form>
         );
     }
@@ -212,6 +219,7 @@ export class TaskView extends React.Component {
                                     <div>{this.state.text}</div>
                                 </div>
                             </div>
+
                             <div className="modal-footer pe-4" style={{backgroundColor: "#f5f5f5"}}>
                                 <p>Создано: {this.state.date_added}</p>
                             </div>
