@@ -19,9 +19,10 @@ export class Create extends React.Component {
             result: ""
         }
         this.handlerInput = this.handlerInput.bind(this);
-        this.handlerSubmit= this.handlerSubmit.bind(this);
+        this.handlerSubmit = this.handlerSubmit.bind(this);
     }
-    handlerInput(event){
+
+    handlerInput(event) {
         const name = event.target.name;
         const value = event.target.value;
         this.setState({
@@ -29,18 +30,18 @@ export class Create extends React.Component {
         })
     }
 
-    handlerSubmit(event){
+    handlerSubmit(event) {
         event.preventDefault();
         const formData = new FormData();
-        formData.append("title",this.state.title);
-        formData.append("text",this.state.text);
-        fetch(host + "/createTask",{
+        formData.append("title", this.state.title);
+        formData.append("text", this.state.text);
+        fetch(host + "/createTask", {
             credentials: 'include',
             method: "POST",
             body: formData
-        }).then(response=>response.json())
-            .then(result=> {
-                if(result.result === "success"){
+        }).then(response => response.json())
+            .then(result => {
+                if (result.result === "success") {
                     this.setState({
                         result: "success"
                     })
@@ -54,29 +55,32 @@ export class Create extends React.Component {
         }
         return (
             <div>
-                <Menu/>
                 <div className="container">
                     <div className={s.modal}>
                         <div className="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
                             <div className="modal-content">
-                                <div className="modal-header row m-1">
-                                    <div className="col-auto mb-1">
-                                        <h5 className="modal-title">Создание задачи</h5>
-                                    </div>
-                                    <div className="col-auto mb-1">
-                                        <Link to="/dashboard" className="btn-close"/>
+                                <div className="modal-header row">
+                                    <div className="d-flex p-2 px-4">
+                                        <div className="d-flex mb-3 flex-fill">
+                                            <h5 className="modal-title" id="staticBackdropLabel">Создание задачи</h5>
+                                        </div>
+                                        <div className="d-flex mb-3">
+                                            <Link to="/dashboard" className="btn-close"/>
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="modal-body m-3">
+
+                                <div className="modal-body p-5">
                                     <form onSubmit={this.handlerSubmit}>
-                                        <div className="col-auto mb-3">
-                                            <input value={this.state.title} onChange={this.handlerInput} name="title" type="text" placeholder="Заголовок" className="form-control"/>
+                                        <div className="mb-3">
+                                            <input value={this.state.title} onChange={this.handlerInput} name="title"
+                                                   type="text" placeholder="Заголовок" className="form-control"/>
                                         </div>
-                                        <div className="col-auto mb-3">
+                                        <div className="mb-3">
                                             <SunEditor
                                                 ref={this.sunEditorRef}
                                                 name="text"
-                                                onChange={(value)=>{
+                                                onChange={(value) => {
                                                     const name = (this.sunEditorRef.current.props.name);
                                                     this.setState({
                                                         [name]: value
@@ -84,10 +88,13 @@ export class Create extends React.Component {
                                                 }}
                                                 height="250px"/>
                                         </div>
-                                        <div className="mb-3 text-center">
-                                            <input disabled={!this.state.title} type="submit" className="btn btn-primary"/>
-                                        </div>
+                                        <input disabled={!this.state.title} type="submit"
+                                               className="btn btn-outline-success" value="Сохранить"/>
                                     </form>
+                                </div>
+
+                                <div className="modal-footer pe-4" style={{backgroundColor: "#f5f5f5"}}>
+                                    <p/>
                                 </div>
                             </div>
                         </div>
