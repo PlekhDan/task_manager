@@ -76,7 +76,7 @@ export class Cabinet extends React.Component{
                     <Menu/>
                     <div className="container">
                         <div className="row">
-                            <div className="col-sm-6 my-5">
+                            <div className="col-sm-6 my-3 border rounded h-100 overflow-hidden shadow-sm bg-white pb-3">
                                 <p className="fs-1 text-start">Личные данные</p>
                                 <div className="row">
                                     <div className="col-sm-10 my-2">
@@ -89,7 +89,7 @@ export class Cabinet extends React.Component{
                                                 <span className="input-group-text" id="basic-addon1">{this.state.flastname}</span>
                                                 <input value={this.state.lastname} onChange={this.handleInput} type="text" className="form-control" name="lastname" placeholder="Фамилия" aria-label="Username" aria-describedby="basic-addon1"/>
                                             </div>
-                                            <input disabled={!this.state.lastname || !this.state.name} type="submit" className="btn btn-primary" value="Сохранить изменения"/>
+                                            <input disabled={!this.state.lastname || !this.state.name} type="submit" className="btn btn-success" value="Сохранить изменения"/>
                                         </form>
                                     </div>
                                 </div>

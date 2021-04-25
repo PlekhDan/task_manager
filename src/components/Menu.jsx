@@ -36,15 +36,15 @@ export class Menu extends React.Component {
             .then(result=>{
                 if(result.result !== "error"){
                     this.setState({
-                        create: <NavLink className="btn btn-outline-success text-nowrap" to="/dashboard/create" type="submit" onClick={this.handleUpdate}>Создать задачу</NavLink>,
-                        cabinet: <NavLink className="btn btn-outline-success text-nowrap" to="/cabinet" type="submit" onClick={this.handleUpdate}>Личный кабинет</NavLink>,
-                        exit:    <NavLink type="submit" className="btn btn-danger" to="/exit" onClick={this.handleUpdate}>Выход</NavLink>,
+                        create: <NavLink className="btn btn-outline-success bg-gradient text-nowrap" to="/dashboard/create" type="submit" onClick={this.handleUpdate}>Создать задачу</NavLink>,
+                        cabinet: <NavLink className="btn btn-outline-success bg-gradient text-nowrap" to="/cabinet" type="submit" onClick={this.handleUpdate}>Личный кабинет</NavLink>,
+                        exit:    <NavLink type="submit" className="btn btn-outline-danger bg-gradient" to="/exit" onClick={this.handleUpdate}>Выход</NavLink>,
                         startpage: "dashboard"
                     })
                 }else if(result.result == "error"){
                     this.setState({
-                        reg: <NavLink className="btn btn-outline-primary" to="/reg" type="submit" onClick={this.handleUpdate}>Регистрация</NavLink>,
-                        auth: <NavLink className="btn btn-outline-primary" to="/auth" type="submit" onClick={this.handleUpdate}>Войти</NavLink>,
+                        reg: <NavLink className="btn btn-outline-dark bg-gradient" to="/reg" type="submit" onClick={this.handleUpdate}>Регистрация</NavLink>,
+                        auth: <NavLink className="btn btn-outline-dark bg-gradient" to="/auth" type="submit" onClick={this.handleUpdate}>Войти</NavLink>,
                         startpage: "/"
                     })
                 }

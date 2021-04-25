@@ -69,9 +69,9 @@ class EditTaskInput extends React.Component {
 
                     {this.state.alert}
                 <input onClick={this.submitCancel} type="submit"
-                       className="btn btn-outline-primary me-2" value="Отменить"/>
+                       className="btn btn-outline-primary bg-gradient me-2" value="Отменить"/>
                 <input onClick={this.submitSave} type="submit"
-                       className="btn btn-outline-success" value="Сохранить" disabled={this.state.editTask === this.props.parent || !this.state.editTask}/>
+                       className="btn btn-outline-success bg-gradient" value="Сохранить" disabled={this.state.editTask === this.props.parent || !this.state.editTask}/>
             </form>
         );
     }
@@ -97,6 +97,8 @@ export class TaskView extends React.Component {
             text: "",
             date_added: "",
             status: "",
+            resultStatus: "",
+            resultRemove: ""
         }
     }
 
@@ -116,7 +118,11 @@ export class TaskView extends React.Component {
             body: formData
         }).then(response => response.json())
             .then(result => {
-                console.log(result);
+                if (result.result === "success") {
+                    this.setState({
+                        resultStatus: "success"
+                    })
+                }
             })
     }
 
@@ -129,7 +135,11 @@ export class TaskView extends React.Component {
             body: formData
         }).then(response => response.json())
             .then(result => {
-                console.log("remove");
+                if (result.result === "success") {
+                    this.setState({
+                        resultRemove: "success"
+                    })
+                }
             })
     }
 
@@ -171,6 +181,11 @@ export class TaskView extends React.Component {
     }
 
     render() {
+        if (this.state.resultStatus === "success") {
+            return window.location.reload()
+        }else if(this.state.resultRemove === "success") {
+            return <Redirect to="/dashboard"/>;
+        }
         return (
             <div className="container">
                 <div className={s.modal}>
@@ -196,19 +211,19 @@ export class TaskView extends React.Component {
                                         <div className="collapse navbar-collapse" id="navbarText">
                                             <div className="d-grid gap-2 d-lg-flex">
                                                 <input onClick={this.updateText} type="submit"
-                                                       className="btn btn-outline-primary" value="Редактировать"/>
+                                                       className="btn btn-outline-primary bg-gradient" value="Редактировать"/>
                                                 <input onClick={this.submitRemove} type="submit"
-                                                       className="btn btn-outline-danger" value="Удалить"/>
+                                                       className="btn btn-outline-danger bg-gradient" value="Удалить"/>
                                             </div>
                                             <ul className="navbar-nav me-auto mb-2 mb-lg-0"/>
                                             <div className="d-grid gap-2 d-lg-flex">
                                                 <input onClick={this.submitProgress} type="submit"
-                                                       className="btn btn-outline-primary text-nowrap"
+                                                       className="btn btn-outline-primary bg-gradient text-nowrap"
                                                        value="Начать выполнение"/>
                                                 <input onClick={this.submitTesting} type="submit"
-                                                       className="btn btn-outline-primary" value="Тестировать"/>
+                                                       className="btn btn-outline-primary bg-gradient" value="Тестировать"/>
                                                 <input onClick={this.submitDone} type="submit"
-                                                       className="btn btn-outline-success" value="Выполнено"/>
+                                                       className="btn btn-outline-success bg-gradient" value="Выполнено"/>
                                             </div>
                                         </div>
                                     </div>

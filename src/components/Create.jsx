@@ -49,9 +49,10 @@ export class Create extends React.Component {
     }
 
 
+
     render() {
         if (this.state.result === "success") {
-            return <Redirect to="/dashboard"/>;
+            return window.location.reload()
         }
         return (
             <div>
@@ -88,7 +89,7 @@ export class Create extends React.Component {
                                                 height="250px"/>
                                         </div>
                                         <input disabled={!this.state.title} type="submit"
-                                               className="btn btn-outline-success" value="Сохранить"/>
+                                               className="btn btn-outline-success bg-gradient" value="Сохранить"/>
                                     </form>
                                 </div>
                                 <div className="modal-footer pe-4" style={{backgroundColor: "#f5f5f5"}}>
