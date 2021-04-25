@@ -48,6 +48,7 @@ export class Create extends React.Component {
             });
     }
 
+
     render() {
         if (this.state.result === "success") {
             return <Redirect to="/dashboard"/>;

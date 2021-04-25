@@ -34,7 +34,7 @@ export class Cabinet extends React.Component{
         const formData = new FormData();
         formData.append("name",this.state.name);
         formData.append("lastname",this.state.lastname);
-        fetch(host + "/handlerChangeUserData",{/* тут для изменения данных в БД (пароль не хешируется?)*/
+        fetch(host + "/handlerChangeUserData",{
             method: "POST",
             body: formData,
             credentials: 'include'

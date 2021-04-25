@@ -2,6 +2,7 @@ import {host} from "../config";
 import {Menu} from "./Menu";
 import React from "react";
 import s from "./Welcome.module.css";
+import sample from "./1.mp4";
 
 export class Exit extends React.Component {
 
@@ -22,17 +23,14 @@ export class Exit extends React.Component {
                 if(result.result == "success"){
                     this.setState({
                         menu: <Menu/>,
-                        body: <div id="carouselExampleSlidesOnly" className="carousel slide" data-bs-ride="carousel">
-                            <div className="carousel-inner">
-                                <div className="carousel-item active">
-                                    <div className={s.blockModule}>
-                                        <div className={s.bord}>
-                                            <h1 className={s.text}>Возвращайтесь!</h1>
-                                        </div>
-                                        <div className={s.img}/>
-                                        {/*<img src="https://www.mota.ru/upload/resize/2560/1600/upload/wallpapers/source/2014/04/16/20/01/39936/hytT7JJUHd-ca5.jpg" className="d-block w-100" alt="..."/>*/}
-                                    </div>
+                        body: <div>
+                            <div className={s.fullscreen}>
+                                <div className={s.body}>
+                                    <div className={s.title}>Возвращайтесь</div>
                                 </div>
+                                <video autoPlay muted loop className={s.video}>
+                                    <source type="video/mp4" src={sample}/>
+                                </video>
                             </div>
                         </div>
                     })

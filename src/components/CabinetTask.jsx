@@ -4,7 +4,7 @@ import {Task} from "./Dashboard/Task";
 
 function Block(props) {
     return (
-        <div className="w-100 h-50 border rounded shadow-sm pb-4 mb-3 bg-white rounded">
+        <div className="w-100 h-50 border rounded shadow-sm pb-3 mb-3 bg-white rounded">
             <h4 className="mb-3 py-3 rounded shadow-sm">{props.name}</h4>
             <div className="h-75 mx-3">
                 <Task {...props}/>
