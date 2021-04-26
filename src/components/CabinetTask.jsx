@@ -25,15 +25,11 @@ export class CabinetTask extends React.Component {
         fetch(host + "/getStatus")
             .then(response => response.json())
             .then(result => {
-                console.log(result);
-                console.log(result[0]);
-                console.log(result[3]);
                 this.setState({
                     blocks: result.filter(item => {
                         if (item.value === "todo" || item.value === "done") {
                             return true;
                         }
-                        console.log(true);
                     }).map(section => {
                         return (
                             <Block

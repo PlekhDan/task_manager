@@ -10,7 +10,6 @@ import {Redirect} from "react-router";
 class EditTaskInput extends React.Component {
     constructor(props) {
         super(props);
-        console.log(this);
         this.handlerInput = this.handlerInput.bind(this);
         this.submitCancel = this.submitCancel.bind(this);
         this.submitSave = this.submitSave.bind(this);
@@ -23,7 +22,6 @@ class EditTaskInput extends React.Component {
     handlerInput(event) {
         const name = event.target.name;
         const value = event.target.value;
-        console.log(this.state.editTask);
         this.setState({
             [name]: value
         });
@@ -38,8 +36,6 @@ class EditTaskInput extends React.Component {
 
     submitSave(event) {
         event.preventDefault();
-        // console.log("Сохнанить");
-        // console.log(this.state.id);
         const formData = new FormData();
         formData.append("id", this.props.id);
         formData.append("text", this.state.editTask);
@@ -233,7 +229,7 @@ export class TaskView extends React.Component {
                                 </div>
                             </div>
 
-                            <div className="modal-footer pe-4" style={{backgroundColor: "#f5f5f5"}}>
+                            <div className="modal-footer pe-4" style={{backgroundColor: "#f0f3f0"}}>
                                 <p>Создано: {this.state.date_added}</p>
                             </div>
                         </div>

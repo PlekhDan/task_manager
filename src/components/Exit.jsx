@@ -13,14 +13,14 @@ export class Exit extends React.Component {
             body: ""
         }
     }
-    componentDidMount() {
 
+    componentDidMount() {
         fetch(host + "/destroySession",{
             credentials: 'include'
         })
             .then(response=>response.json())
             .then(result=>{
-                if(result.result == "success"){
+                if(result.result === "success"){
                     this.setState({
                         menu: <Menu/>,
                         body: <div>
@@ -35,16 +35,14 @@ export class Exit extends React.Component {
                         </div>
                     })
                 }
-
             })
     }
+
     render() {
         return ( <div>
                 {this.state.menu}
                 {this.state.body}
                 </div>
-
-
         );
     }
 }

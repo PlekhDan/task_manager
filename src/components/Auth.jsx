@@ -1,5 +1,4 @@
 import React from 'react';
-import {Dashboard} from "./Dashboard/Dashboard";
 import {Redirect} from "react-router";
 import {host} from "../config";
 import {Menu} from "./Menu";
