@@ -69,7 +69,7 @@ class EditTaskInput extends React.Component {
 
                     {this.state.alert}
                 <input onClick={this.submitCancel} type="submit"
-                       className="btn btn-outline-primary bg-gradient me-2" value="Отменить"/>
+                       className="btn btn-outline-dark bg-gradient me-2" value="Отменить"/>
                 <input onClick={this.submitSave} type="submit"
                        className="btn btn-outline-success bg-gradient" value="Сохранить" disabled={this.state.editTask === this.props.parent || !this.state.editTask}/>
             </form>
@@ -183,8 +183,6 @@ export class TaskView extends React.Component {
     render() {
         if (this.state.resultStatus === "success") {
             return window.location.reload()
-        }else if(this.state.resultRemove === "success") {
-            return <Redirect to="/dashboard"/>;
         }
         return (
             <div className="container">
@@ -211,17 +209,17 @@ export class TaskView extends React.Component {
                                         <div className="collapse navbar-collapse" id="navbarText">
                                             <div className="d-grid gap-2 d-lg-flex">
                                                 <input onClick={this.updateText} type="submit"
-                                                       className="btn btn-outline-primary bg-gradient" value="Редактировать"/>
+                                                       className="btn btn-outline-dark bg-gradient" value="Редактировать"/>
                                                 <input onClick={this.submitRemove} type="submit"
                                                        className="btn btn-outline-danger bg-gradient" value="Удалить"/>
                                             </div>
                                             <ul className="navbar-nav me-auto mb-2 mb-lg-0"/>
                                             <div className="d-grid gap-2 d-lg-flex">
                                                 <input onClick={this.submitProgress} type="submit"
-                                                       className="btn btn-outline-primary bg-gradient text-nowrap"
+                                                       className="btn btn-outline-dark bg-gradient text-nowrap"
                                                        value="Начать выполнение"/>
                                                 <input onClick={this.submitTesting} type="submit"
-                                                       className="btn btn-outline-primary bg-gradient" value="Тестировать"/>
+                                                       className="btn btn-outline-dark bg-gradient" value="Тестировать"/>
                                                 <input onClick={this.submitDone} type="submit"
                                                        className="btn btn-outline-success bg-gradient" value="Выполнено"/>
                                             </div>

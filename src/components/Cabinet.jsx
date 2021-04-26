@@ -89,7 +89,7 @@ export class Cabinet extends React.Component{
                                                 <span className="input-group-text" id="basic-addon1">{this.state.flastname}</span>
                                                 <input value={this.state.lastname} onChange={this.handleInput} type="text" className="form-control" name="lastname" placeholder="Фамилия" aria-label="Username" aria-describedby="basic-addon1"/>
                                             </div>
-                                            <input disabled={!this.state.lastname || !this.state.name} type="submit" className="btn btn-success" value="Сохранить изменения"/>
+                                            <input disabled={!this.state.lastname || !this.state.name} type="submit" className="btn btn-dark bg-gradient" value="Сохранить изменения"/>
                                         </form>
                                     </div>
                                 </div>

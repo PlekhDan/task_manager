@@ -4,16 +4,52 @@ import {host} from "../../config";
 
 
 
-function OneTask(props) {
-    return (
-        <Link className="card text-white mb-3" to={`/dashboard/task/${props.id}`}>
-            <img className="card text-white rounded" src="https://1.cms.s81c.com/sites/default/files/2018-05-01/Connections%20leadspace%202.png" style={{height: "100px"}} alt="..."/>
-                <div className="card-img-overlay">
-                    <h5 className="card-title position-absolute top-50 start-50 translate-middle">{props.title}</h5>
-                </div>
-        </Link>
 
-    );
+
+
+
+export class OneTask extends React.Component {
+    constructor(props) {
+        super(props);
+        this.submitRemove = this.submitRemove.bind(this);
+        this.state = {
+            resultRemove: ""
+        }
+    }
+
+    submitRemove() {
+        const formData = new FormData;
+        formData.append("id", this.props.id);
+        fetch(host+"/removeTask", {
+            method: "POST",
+            body: formData
+        }).then(response => response.json())
+            .then(result => {
+                if (result.result === "success") {
+                    this.setState({
+                        resultRemove: "success"
+                    })
+                }
+            })
+    }
+    render() {
+        if(this.state.resultRemove === "success"){
+            return window.location.reload()
+        }
+        return (
+            <Link className="card text-white mb-3" to={`/dashboard/task/${this.props.id}`}>
+                <img className="card text-white rounded" src="https://1.cms.s81c.com/sites/default/files/2018-05-01/Connections%20leadspace%202.png" style={{height: "100px"}} alt="..."/>
+                <div className="card-img-overlay">
+                    <div className="d-flex flex-row-reverse bd-highlight mb-3">
+                        <Link onClick={this.submitRemove} className="btn-close"/>
+                    </div>
+                    <h5 className="card-title position-absolute top-50 start-50 translate-middle">{this.props.title}</h5>
+                </div>
+            </Link>
+
+        );
+    }
+
 }
 //зеленый https://www.plastics-foils.ru/upload/iblock/a96/a96d657c9d40985544f31428eea8e6a6.jpg
 // фисташковый https://catherineasquithgallery.com/uploads/posts/2021-02/1612595006_4-p-fistashkovii-fon-poluprozrachnii-4.jpg
@@ -34,6 +70,7 @@ export class Task extends React.Component {
             tasks: []
         }
     }
+
 
     componentDidMount() {
         const formData = new FormData;
@@ -61,6 +98,7 @@ export class Task extends React.Component {
                     })
                 })
             })
+
     }
 
     render() {

@@ -38,7 +38,7 @@ export class Menu extends React.Component {
                     this.setState({
                         create: <NavLink className="btn btn-outline-success bg-gradient text-nowrap" to="/dashboard/create" type="submit" onClick={this.handleUpdate}>Создать задачу</NavLink>,
                         cabinet: <NavLink className="btn btn-outline-success bg-gradient text-nowrap" to="/cabinet" type="submit" onClick={this.handleUpdate}>Личный кабинет</NavLink>,
-                        exit:    <NavLink type="submit" className="btn btn-outline-danger bg-gradient" to="/exit" onClick={this.handleUpdate}>Выход</NavLink>,
+                        exit:    <NavLink type="submit" className="btn btn-outline-dark bg-gradient" to="/exit" onClick={this.handleUpdate}>Выход</NavLink>,
                         startpage: "dashboard"
                     })
                 }else if(result.result == "error"){
