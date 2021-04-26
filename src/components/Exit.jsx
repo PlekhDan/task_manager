@@ -23,16 +23,23 @@ export class Exit extends React.Component {
                 if(result.result === "success"){
                     this.setState({
                         menu: <Menu/>,
-                        body: <div>
-                            <div className={s.fullscreen}>
-                                <div className={s.body}>
-                                    <div className={s.title}>Возвращайтесь</div>
-                                </div>
+                        body:
+                        //     <div>
+                        //     <div className={s.fullscreen}>
+                        //         <div className={s.body}>
+                        //             <div className={s.title}>Возвращайтесь</div>
+                        //         </div>
+                        //         <video autoPlay muted loop className={s.video}>
+                        //             <source type="video/mp4" src={sample}/>
+                        //         </video>
+                        //     </div>
+                        // </div>
+                            <div className={s.outer}>
+                                <div className={s.title}>Возвращайтесь</div>
                                 <video autoPlay muted loop className={s.video}>
                                     <source type="video/mp4" src={sample}/>
                                 </video>
                             </div>
-                        </div>
                     })
                 }
             })
