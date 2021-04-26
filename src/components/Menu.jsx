@@ -1,16 +1,10 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
-import {BrowserRouter, Route} from "react-router-dom";
-import s from "./Dashboard/DashboardSection.module.css"
-import {matchPath} from 'react-router-dom';
-import {withRouter} from "react-router";
 import {host} from "../config";
 
 
 
-
 export class Menu extends React.Component {
-
 
     handleUpdate = () => {
         this.forceUpdate();
@@ -41,7 +35,7 @@ export class Menu extends React.Component {
                         exit:    <NavLink type="submit" className="btn btn-outline-dark bg-gradient" to="/exit" onClick={this.handleUpdate}>Выход</NavLink>,
                         startpage: "dashboard"
                     })
-                }else if(result.result == "error"){
+                }else if(result.result === "error"){
                     this.setState({
                         reg: <NavLink className="btn btn-outline-dark bg-gradient" to="/reg" type="submit" onClick={this.handleUpdate}>Регистрация</NavLink>,
                         auth: <NavLink className="btn btn-outline-dark bg-gradient" to="/auth" type="submit" onClick={this.handleUpdate}>Войти</NavLink>,

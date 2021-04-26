@@ -19,8 +19,6 @@ export class Welcome extends React.Component {
                         </div>
                     </div>
             </div>
-
-
         );
     }
 }

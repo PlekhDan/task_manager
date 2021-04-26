@@ -3,9 +3,8 @@ import {Link} from "react-router-dom";
 import {host} from "../../config";
 
 
-
-
-
+// #f0f3f0 светло-бежевый
+// #beb6a0 темно-бежевый
 
 
 export class OneTask extends React.Component {
@@ -17,7 +16,8 @@ export class OneTask extends React.Component {
         }
     }
 
-    submitRemove() {
+    submitRemove(event) {
+        event.preventDefault();
         const formData = new FormData;
         formData.append("id", this.props.id);
         fetch(host+"/removeTask", {
@@ -32,35 +32,34 @@ export class OneTask extends React.Component {
                 }
             })
     }
+
     render() {
         if(this.state.resultRemove === "success"){
-            return window.location.reload()
+            return window.location.reload();
         }
         return (
-            <Link className="card text-white mb-3" to={`/dashboard/task/${this.props.id}`}>
-                <img className="card text-white rounded" src="https://1.cms.s81c.com/sites/default/files/2018-05-01/Connections%20leadspace%202.png" style={{height: "100px"}} alt="..."/>
-                <div className="card-img-overlay">
-                    <div className="d-flex flex-row-reverse bd-highlight mb-3">
-                        <Link onClick={this.submitRemove} className="btn-close"/>
+            // <Link className="card text-white mb-3" to={`/dashboard/task/${this.props.id}`}>
+            //     {/*<img className="card text-white rounded" src="https://1.cms.s81c.com/sites/default/files/2018-05-01/Connections%20leadspace%202.png" style={{height: "100px"}} alt="..."/>*/}
+            //     <div className="card text-dark mb-3" style={{height: "100px", background: "linear-gradient(135deg,#f0f3f0,#beb6a0)"}} to={`/dashboard/task/${this.props.id}`}/>
+            //     <div className="card-img-overlay">
+            //         <div className="d-flex flex-row-reverse bd-highlight mb-3">
+            //             <button onClick={this.submitRemove} className="btn-close" title="Удалить задачу"/>
+            //         </div>
+            //         <h5 className="card-title position-absolute top-50 start-50 translate-middle">{this.props.title}</h5>
+            //     </div>
+            // </Link>
+
+            <Link className="card text-dark mb-3" style={{height: "100px", background: "linear-gradient(135deg,#f0f3f0,#beb6a0)"}} to={`/dashboard/task/${this.props.id}`}>
+                    <div className="d-flex flex-row-reverse p-2">
+                        <button onClick={this.submitRemove} className="btn-close btn-close-white" title="Удалить задачу"/>
                     </div>
-                    <h5 className="card-title position-absolute top-50 start-50 translate-middle">{this.props.title}</h5>
-                </div>
+                    <h6 className="card-title position-absolute top-50 start-50 translate-middle m-0">{this.props.title}</h6>
             </Link>
 
         );
     }
-
 }
-//зеленый https://www.plastics-foils.ru/upload/iblock/a96/a96d657c9d40985544f31428eea8e6a6.jpg
-// фисташковый https://catherineasquithgallery.com/uploads/posts/2021-02/1612595006_4-p-fistashkovii-fon-poluprozrachnii-4.jpg
-// синий градиент https://1.cms.s81c.com/sites/default/files/2018-05-01/Connections%20leadspace%202.png
 
-/*<Link className="btn btn-primary bg-gradient mb-3 w-100" to={`/dashboard/task/${props.id}`}
-      type="submit">
-    <div className="p-3 text-center">
-        <h6 className="m-0">{props.title}</h6>
-    </div>
-</Link>*/
 
 export class Task extends React.Component {
 
@@ -71,10 +70,8 @@ export class Task extends React.Component {
         }
     }
 
-
     componentDidMount() {
         const formData = new FormData;
-        // this.props.id
         formData.append("id", this.props.id);
             fetch(host+"/getOneStatus", {
             credentials: 'include',

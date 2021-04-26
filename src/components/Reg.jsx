@@ -3,6 +3,8 @@ import {Redirect} from "react-router-dom";
 import {host} from "../config";
 import {Menu} from "./Menu";
 
+
+
 export class Reg extends React.Component{
     constructor(props) {
         super(props);

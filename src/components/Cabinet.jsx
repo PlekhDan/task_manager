@@ -1,6 +1,5 @@
 import React from "react";
 import {host} from "../config";
-import {Redirect} from "react-router-dom";
 import {CabinetTask} from "./CabinetTask";
 import {Menu} from "./Menu";
 

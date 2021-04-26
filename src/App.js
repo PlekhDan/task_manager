@@ -1,15 +1,12 @@
 import './App.css';
 import {BrowserRouter, Route} from "react-router-dom";
-import {Menu} from "./components/Menu";
 import {Welcome} from "./components/Welcome";
 import {Dashboard} from "./components/Dashboard/Dashboard";
 import {Reg} from "./components/Reg";
 import {TaskView} from "./components/Dashboard/TaskView";
-import {Task} from "./components/Dashboard/Task";
 import {Auth} from "./components/Auth";
 import {Cabinet} from "./components/Cabinet";
 import {Create} from "./components/Create";
-import {host} from "./config";
 import React from "react";
 import {Exit} from "./components/Exit";
 
@@ -28,7 +25,6 @@ function App() {
             </BrowserRouter>
     );
 }
-
 
 
 export default App;
