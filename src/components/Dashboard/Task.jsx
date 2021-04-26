@@ -1,6 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {host} from "../../config";
+import {Redirect} from "react-router";
 
 
 // #f0f3f0 светло-бежевый
@@ -35,7 +36,7 @@ export class OneTask extends React.Component {
 
     render() {
         if(this.state.resultRemove === "success"){
-            return window.location.reload();
+            return <Redirect to="/dashboard"/>;
         }
         return (
             // <Link className="card text-white mb-3" to={`/dashboard/task/${this.props.id}`}>
