@@ -76,20 +76,23 @@ export class Cabinet extends React.Component{
                     <Menu/>
                     <div className="container">
                         <div className="row">
-                            <div className="col-sm-6 my-3 border rounded h-100 overflow-hidden shadow-sm bg-white pb-3">
-                                <p className="fs-1 text-start">Личные данные</p>
+                            <div className="col-sm-6 my-3 border rounded h-50 shadow-sm bg-white pb-3">
+                                <h4 className="mb-3 py-3 rounded shadow-sm text-center">ЛИЧНЫЕ ДАННЫЕ</h4>
                                 <div className="row">
-                                    <div className="col-sm-10 my-2">
+                                    <div className="col-sm">
                                         <form onSubmit={this.handleSubmit}>
-                                            <div className="input-group mb-3">
+                                            <div className="input-group mb-2 p-1">
                                                 <span  className="input-group-text" id="basic-addon1">{this.state.fname}</span>
                                                 <input value={this.state.name} onChange={this.handleInput} type="text" className="form-control" name="name" placeholder="Имя"  aria-label="Username" aria-describedby="basic-addon1"/>
                                             </div>
-                                            <div className="input-group mb-3">
+                                            <div className="input-group mb-2 p-1">
                                                 <span className="input-group-text" id="basic-addon1">{this.state.flastname}</span>
                                                 <input value={this.state.lastname} onChange={this.handleInput} type="text" className="form-control" name="lastname" placeholder="Фамилия" aria-label="Username" aria-describedby="basic-addon1"/>
                                             </div>
-                                            <input disabled={!this.state.lastname || !this.state.name} type="submit" className="btn btn-dark bg-gradient" value="Сохранить изменения"/>
+                                            <div className="p-1">
+                                                <input disabled={!this.state.lastname || !this.state.name} type="submit" className="btn btn-dark bg-gradient" value="Сохранить изменения"/>
+                                            </div>
+
                                         </form>
                                     </div>
                                 </div>
