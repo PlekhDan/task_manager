@@ -74,7 +74,7 @@ export class Cabinet extends React.Component {
                 <div>
                     <Menu/>
                     <div className="container">
-                        <div className="d-flex bg-info">
+                        <div className="d-flex">
                             <div className="col-sm-6">
                                 <div className="p-3 h-100">
                                     <div className="w-100 h-50 border rounded shadow-sm pb-3 mb-3 bg-white rounded">
